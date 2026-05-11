@@ -1,6 +1,9 @@
 # Production Security Configuration
 # Enforce HTTPS and Security Headers
 
+# Prefer the public landing page for root requests
+DirectoryIndex landing.php index.php
+
 # Enable mod_rewrite
 <IfModule mod_rewrite.c>
     RewriteEngine On
