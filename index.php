@@ -88,7 +88,7 @@ if (file_exists($maintenance_file)) {
 
 // Require login
 if (empty($_SESSION['user'])) {
-    header('Location: welcome.php');
+    header('Location: landing.php');
     exit;
 }
 
