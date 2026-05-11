@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenix - Dashboard</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            background: #2c3e50;
+            color: #fff;
+            min-height: 100vh;
+            padding: 0;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .sidebar-header i {
+            font-size: 28px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            margin: 0;
+            border: none;
+        }
+        
+        .sidebar-menu li a {
+            display: block;
+            padding: 15px 25px;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .sidebar-menu li a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #fff;
+            border-left-color: #667eea;
+            padding-left: 30px;
+        }
+        
+        .sidebar-menu li a.active {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            border-left-color: #667eea;
+            font-weight: 600;
+        }
+        
+        .sidebar-menu li i {
+            width: 20px;
+            margin-right: 15px;
+            text-align: center;
+        }
+        
+        /* Top Navigation Bar */
+        .navbar-cmms {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border-bottom: none;
+        }
+        
+        .navbar-cmms .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: white;
+            margin: 0;
+        }
+        
+        .navbar-cmms .user-info {
+            color: white;
+            font-size: 14px;
+        }
+        
+        .navbar-cmms .user-info strong {
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .main-content {
+            background: #f8f9fa;
+            padding: 30px;
+            min-height: 100vh;
+        }
+        
+        .page-header {
+            margin-bottom: 30px;
+        }
+        
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+        }
+        
+        .page-header .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        
+        .page-header .breadcrumb-item.active {
+            color: #667eea;
+        }
+        
+        /* Metric Cards */
+        .metric-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .metric-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+        }
+        
+        .metric-card .metric-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .metric-card .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        
+        .metric-card .metric-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metric-card .metric-trend {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .metric-card.pending {
+            border-left: 4px solid #f39c12;
+        }
+        
+        .metric-card.pending .metric-icon {
+            color: #f39c12;
+        }
+        
+        .metric-card.completed {
+            border-left: 4px solid #27ae60;
+        }
+        
+        .metric-card.completed .metric-icon {
+            color: #27ae60;
+        }
+        
+        .metric-card.overdue {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .metric-card.overdue .metric-icon {
+            color: #e74c3c;
+        }
+        
+        .metric-card.scheduled {
+            border-left: 4px solid #3498db;
+        }
+        
+        .metric-card.scheduled .metric-icon {
+            color: #3498db;
+        }
+        
+        /* Section Cards */
+        .section-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-header i {
+            font-size: 24px;
+        }
+        
+        .section-body {
+            padding: 25px;
+        }
+        
+        /* Tables */
+        .table-modern {
+            margin: 0;
+        }
+        
+        .table-modern thead th {
+            background: #f0f2f5;
+            color: #2c3e50;
+            font-weight: 600;
+            border: none;
+            padding: 15px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        
+        .table-modern tbody td {
+            padding: 15px;
+            border-color: #ecf0f1;
+            vertical-align: middle;
+        }
+        
+        .table-modern tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .table-modern tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Status Badges */
+        .badge-pending {
+            background: #fff3cd;
+            color: #856404;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-completed {
+            background: #d4edda;
+            color: #155724;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-overdue {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-in-progress {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Buttons */
+        .btn-action {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+            border: none;
+        }
+        
+        .btn-secondary:hover {
+            background: #bdc3c7;
+            transform: translateY(-2px);
+        }
+        
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 24px;
+            }
+            
+            .metric-value {
+                font-size: 28px !important;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .metric-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .section-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="min-height: 100vh;">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="fas fa-tools"></i> CMMS</h2>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="?nav=dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="?nav=work_orders"><i class="fas fa-list-check"></i> Work Orders</a></li>
+                    <li><a href="?nav=pm"><i class="fas fa-calendar-check"></i> PM Schedule</a></li>
+                    <li><a href="?nav=equipment"><i class="fas fa-cog"></i> Equipment</a></li>
+                    <li><a href="?nav=personnel"><i class="fas fa-users"></i> Personnel</a></li>
+                    <li><a href="?nav=reports"><i class="fas fa-file-chart-line"></i> Reports</a></li>
+                    <li><a href="?nav=settings"><i class="fas fa-sliders-h"></i> Settings</a></li>
+                    <li style="margin-top: 20px; border-top: 1px solid #34495e;"><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <!-- Top Navigation Bar -->
+                <nav class="navbar-cmms">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div class="navbar-brand">
+                            <i class="fas fa-tools"></i> Maintenix
+                        </div>
+                        <div class="user-info">
+                            <i class="fas fa-user-circle"></i> <strong>Welcome, User</strong> | <?php echo date('M d, Y'); ?>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"> Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <!-- Key Metrics -->
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-md-6 col-lg-3" style="margin-bottom: 20px;">
+                        <div class="metric-card pending">
+                            <div class="metric-icon"><i class="fas fa-hourglass-half"></i></div>
+                            <div class="metric-label">Pending Work Orders</div>
+                            <div class="metric-value">24</div>
+                            <div class="metric-trend"><i class="fas fa-arrow-up"></i> 3 this week</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3" style="margin-bottom: 20px;">
+                        <div class="metric-card completed">
+                            <div class="metric-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="metric-label">Completed (30 days)</div>
+                            <div class="metric-value">87</div>
+                            <div class="metric-trend"><span style="color: #27ae60;">+12% from last month</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3" style="margin-bottom: 20px;">
+                        <div class="metric-card overdue">
+                            <div class="metric-icon"><i class="fas fa-exclamation-circle"></i></div>
+                            <div class="metric-label">Overdue Tasks</div>
+                            <div class="metric-value">5</div>
+                            <div class="metric-trend"><span style="color: #e74c3c;">Action required</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3" style="margin-bottom: 20px;">
+                        <div class="metric-card scheduled">
+                            <div class="metric-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="metric-label">Scheduled PMs</div>
+                            <div class="metric-value">16</div>
+                            <div class="metric-trend"><span style="color: #3498db;">Next due in 3 days</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Row -->
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h2><i class="fas fa-chart-bar"></i> Work Orders by Status</h2>
+                            </div>
+                            <div class="section-body">
+                                <div class="chart-container">
+                                    <canvas id="statusChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h2><i class="fas fa-chart-line"></i> Monthly Completion Trend</h2>
+                            </div>
+                            <div class="section-body">
+                                <div class="chart-container">
+                                    <canvas id="trendChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Work Orders -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2><i class="fas fa-list"></i> Recent Work Orders</h2>
+                        <a href="?nav=work_orders" style="color: white; text-decoration: none; font-size: 14px;">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="section-body">
+                        <table class="table table-modern">
+                            <thead>
+                                <tr>
+                                    <th>WO #</th>
+                                    <th>Description</th>
+                                    <th>Assigned To</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#102</strong></td>
+                                    <td>PM: Machine maintenance</td>
+                                    <td>John Smith</td>
+                                    <td><span style="color: #f39c12; font-weight: 600;">High</span></td>
+                                    <td><span class="badge-in-progress">In Progress</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-action btn-primary">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#101</strong></td>
+                                    <td>Pump seal replacement</td>
+                                    <td>Mike Johnson</td>
+                                    <td><span style="color: #3498db; font-weight: 600;">Medium</span></td>
+                                    <td><span class="badge-pending">Pending</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-action btn-primary">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#100</strong></td>
+                                    <td>Equipment inspection</td>
+                                    <td>Sarah Davis</td>
+                                    <td><span style="color: #27ae60; font-weight: 600;">Low</span></td>
+                                    <td><span class="badge-completed">Completed</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-action btn-secondary">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- PM Schedule -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2><i class="fas fa-calendar-check"></i> Upcoming PM Schedule</h2>
+                        <a href="?nav=pm" style="color: white; text-decoration: none; font-size: 14px;">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="section-body">
+                        <table class="table table-modern">
+                            <thead>
+                                <tr>
+                                    <th>Equipment</th>
+                                    <th>PM Type</th>
+                                    <th>Due Date</th>
+                                    <th>Work Order</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Pump 01</strong></td>
+                                    <td>Oil Change</td>
+                                    <td>2026-02-18</td>
+                                    <td><a href="#">#103</a></td>
+                                    <td><span class="badge-pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Motor A</strong></td>
+                                    <td>Bearing Lubrication</td>
+                                    <td>2026-02-18</td>
+                                    <td>-</td>
+                                    <td><span class="badge-pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Conveyor Belt</strong></td>
+                                    <td>Tension Check</td>
+                                    <td>2026-02-19</td>
+                                    <td>-</td>
+                                    <td><span class="badge-pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div class="footer">
+                    <p>&copy; 2026 Maintenix. Maintenance Management System. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Status Chart
+        const statusCtx = document.getElementById('statusChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Pending', 'In Progress', 'On Hold'],
+                datasets: [{
+                    data: [87, 24, 15, 8],
+                    backgroundColor: [
+                        '#27ae60',
+                        '#f39c12',
+                        '#3498db',
+                        '#95a5a6'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Trend Chart
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Work Orders Completed',
+                    data: [65, 59, 80, 81, 87, 95],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            usePointStyle: true
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

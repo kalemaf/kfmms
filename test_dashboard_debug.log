@@ -1,0 +1,14 @@
+Starting dashboard test...
+About to include dashboard...
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1188
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1189
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1190
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1191
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1195
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1198
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1200
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1201
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1202
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1203
+ERROR (2): ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1205
+ERROR (2): session_save_path(): Session save path cannot be changed when a session is active (started from C:\free-cmms 0.04\config.inc.php on line 1186) in C:\free-cmms 0.04\config.inc.php:1208

@@ -1,0 +1,16 @@
+
+Deprecated: attach_part_to_equipment(): Optional parameter $quantity declared before required parameter $connection is implicitly treated as a required parameter in C:\free-cmms 0.04\libraries\inventory_manager.php on line 1657
+
+Warning: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 940
+
+Warning: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 941
+
+Warning: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 942
+
+Warning: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 943
+
+Warning: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 947
+
+Warning: ini_set(): Session ini settings cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 950
+
+Warning: session_save_path(): Session save path cannot be changed after headers have already been sent (sent from C:\free-cmms 0.04\config.inc.php on line 839) in C:\free-cmms 0.04\config.inc.php on line 952

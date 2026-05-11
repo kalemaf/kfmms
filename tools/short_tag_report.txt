@@ -1,0 +1,363 @@
+Short-tag and legacy mysql_* usage report
+Generated: 2026-02-16T17:07:28+00:00
+
+File: access.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: common.inc.php
+  - mysql_calls: mysql_date
+  - mysql_calls: mysql_date
+
+File: config.inc.php
+  - mysql_calls: mysql_query
+  - mysql_calls: mysql_connect
+  - mysql_calls: mysql_connect
+  - mysql_calls: mysql_select_db
+  - mysql_calls: mysql_real_escape_string
+  - mysql_calls: mysql_query
+  - mysql_calls: mysql_num_rows
+  - mysql_calls: mysql_fetch_object
+  - mysql_calls: mysql_fetch_assoc
+  - mysql_calls: mysql_error
+  - mysql_calls: mysql_close
+
+File: configure.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: create_user.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: edit_material.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: equipment.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: equipment_edit.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: equipment_import.php
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: hot_job.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: hot_work.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: list.php
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: manager_setup.php
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: migrations\run_all_pm_migrations.php
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: personnel.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: pm.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: pm_meter.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: pm_metrics.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: pm_professional.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: pm_schedule_edit.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: pm_schedules_list.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: search.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+
+File: tools\generate_shorttag_mysql_report.php
+  - mysql_calls: mysql_calls
+
+File: work_order.php
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+  - short_echo: <?=
+

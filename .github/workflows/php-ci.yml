@@ -1,0 +1,40 @@
+name: PHP CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v4
+        with:
+          php-version: '8.1'
+          extensions: mysqli, sqlite3
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHP syntax validation
+        run: |
+          php -l config.inc.php
+          php -l common.inc.php
+          php -l auth.php
+          php -l license_gate.php
+          php -l purchase_request.php
+          php -l work_order.php
+
+      - name: Run repository lint
+        run: php tools/lint_all.php
+
+      - name: Run automated tests
+        run: php tests/run_tests.php

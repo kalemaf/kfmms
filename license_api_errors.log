@@ -1,0 +1,14 @@
+[23-Apr-2026 16:41:06 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[23-Apr-2026 16:41:06 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1015
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1016
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1017
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1018
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1022
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1025
+[23-Apr-2026 16:41:06 UTC] PHP Warning:  session_save_path(): Session save path cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_license_api.php on line 15) in C:\free-cmms 0.04\config.inc.php on line 1027
+[23-Apr-2026 16:41:06 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[23-Apr-2026 12:41:06 America/New_York] PHP Fatal error:  Cannot redeclare function log_license_action() (previously declared in C:\free-cmms 0.04\license_api.php:299) in C:\free-cmms 0.04\common.inc.php on line 762
+Stack trace:
+#0 C:\free-cmms 0.04\debug_license_api.php(30): include()
+#1 {main}

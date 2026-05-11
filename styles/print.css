@@ -1,0 +1,81 @@
+body  
+{
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: small;
+	color: #000000;
+	background-color: #ffffff
+}
+
+h1    
+{
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: large;
+	font-weight: bold
+}
+
+workorder	
+{
+	page-break-after:always
+}
+
+table 
+{
+	border-width:1px;
+	border-color:#000000;
+	border-style:solid;
+	border-collapse:collapse;
+	border-spacing:0
+}
+
+th    
+{
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: small;
+	font-weight: bold; color: #000000; background-color: #ffffff;
+	border-width:1px;
+	border-color:#000000;
+	border-style:solid;
+	padding:2px;
+}
+
+td    
+{
+	font-family: monospace, san-serif;
+	font-size: small;
+	color: #000000;
+	background-color: #ffffff;
+	border-width:1px;
+	border-color:#000000;
+	border-style:solid;
+	padding:5px
+}
+
+td.name
+{
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: x-small;
+	white-space: nowrap;
+	color: #000000;
+	background-color: #ffffff;
+	border-width:1px;
+	border-color:#000000;
+	border-style:solid;
+	padding:1px;
+	vertical-align:top;
+	text-align:left;
+	line-height:2;
+	border-bottom:hidden
+}
+
+td.user-fill
+{
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: medium;
+	color: #000000;
+	background-color: #ffffff;
+	border-width:1px;
+	border-color:#000000;
+	border-bottom:dotted;
+	padding:5px
+}
+

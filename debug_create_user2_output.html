@@ -1,0 +1,1148 @@
+
+Warning: ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 811
+
+Warning: ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 812
+
+Warning: ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 813
+
+Warning: ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 814
+
+Warning: ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 818
+
+Warning: ini_set(): Session ini settings cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 821
+
+Warning: session_save_path(): Session save path cannot be changed when a session is active (started from C:\free-cmms 0.04\debug_create_user2.php on line 16) in C:\free-cmms 0.04\config.inc.php on line 823
+
+<style>
+.saas-control-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.control-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.control-header h3 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.control-header p {
+    margin: 8px 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1em;
+}
+
+.saas-control-container {
+    max-width: 1320px;
+    margin: 30px auto;
+    padding: 30px 28px 40px;
+    background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 100%);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(15, 36, 97, 0.12);
+}
+
+.control-header {
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(136, 152, 210, 0.18);
+    margin-bottom: 28px;
+}
+
+.control-header h3 {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #1f2d55;
+}
+
+.control-header p {
+    margin: 10px 0 0;
+    color: #5f6f94;
+    opacity: 0.95;
+    font-size: 1rem;
+    max-width: 760px;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.control-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 18px 45px rgba(79, 114, 220, 0.08);
+    border: 1px solid rgba(102, 126, 234, 0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.control-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 60px rgba(79, 114, 220, 0.14);
+}
+
+.control-card h4 {
+    margin: 0 0 18px 0;
+    color: #16254d;
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+.control-card .card-icon {
+    font-size: 1.6em;
+    margin-right: 10px;
+    color: #4f72dc;
+}
+
+.status-active { color: #28a745; font-weight: 600; }
+.status-inactive { color: #6c757d; }
+.status-locked { color: #dc3545; font-weight: 600; }
+.status-expired { color: #fd7e14; font-weight: 600; }
+.status-trial { color: #17a2b8; font-weight: 600; }
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.metric-card {
+    background: linear-gradient(180deg, #eef4ff 0%, #ffffff 100%);
+    padding: 20px 18px;
+    border-radius: 16px;
+    text-align: center;
+    border-left: 5px solid #5b7cec;
+    box-shadow: 0 12px 24px rgba(43, 82, 165, 0.08);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #183568;
+    display: block;
+}
+
+.metric-label {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 14px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 14px;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #f8fbff;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #5b7cec;
+    box-shadow: 0 0 0 4px rgba(91, 124, 236, 0.12);
+}
+
+.btn-saas {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 10px 24px rgba(39, 108, 247, 0.14);
+}
+
+.btn-saas:hover {
+    transform: translateY(-1px);
+}
+
+.btn-activate {
+    background: linear-gradient(135deg, #2596be, #3ea7f8);
+    color: white;
+}
+.btn-activate:hover {
+    background: linear-gradient(135deg, #1f81b1, #2b95e1);
+}
+
+.btn-deactivate {
+    background: linear-gradient(135deg, #f05d66, #d93b4f);
+    color: white;
+}
+.btn-deactivate:hover {
+    background: linear-gradient(135deg, #d94b55, #c42c3f);
+}
+
+.btn-update {
+    background: linear-gradient(135deg, #5062ff, #1a48d1);
+    color: white;
+}
+.btn-update:hover {
+    background: linear-gradient(135deg, #3f4ee5, #163bb5);
+}
+
+.btn-payment {
+    background: linear-gradient(135deg, #f7c948, #f59f1b);
+    color: #212529;
+}
+.btn-payment:hover {
+    background: linear-gradient(135deg, #e5b32d, #d48610);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.data-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+}
+
+.alert-success { background-color: #d4edda; color: #155724; border-left-color: #28a745; }
+.alert-danger { background-color: #f8d7da; color: #721c24; border-left-color: #dc3545; }
+.alert-warning { background-color: #fff3cd; color: #856404; border-left-color: #ffc107; }
+.alert-info { background-color: #d1ecf1; color: #0c5460; border-left-color: #17a2b8; }
+
+.license-key {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.system-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-locked { background-color: #dc3545; color: white; }
+.badge-active { background-color: #28a745; color: white; }
+.badge-inactive { background-color: #6c757d; color: white; }
+.badge-expired { background-color: #fd7e14; color: white; }
+.badge-trial { background-color: #17a2b8; color: white; }
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s;
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+</style>
+
+<div class="saas-control-container">
+    <div class="control-header">
+        <h3><i class="fas fa-crown"></i> 🏢 SaaS Control Center - Efficraft Technologies</h3>
+        <p>Professional cloud-based CMMS management platform with enterprise-grade controls</p>
+    </div>
+
+        <div class="alert alert-success">
+        <i class="fas fa-info-circle"></i> ✅ User &lt;strong&gt;debuguser_1776198436&lt;/strong&gt; created successfully! Role: technician    </div>
+    
+    <!-- System Overview Metrics -->
+    <div class="control-grid">
+        <div class="control-card">
+            <h4><i class="fas fa-chart-line card-icon"></i>System Overview</h4>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <span class="metric-value">3</span>
+                    <span class="metric-label">Total Companies</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">9</span>
+                    <span class="metric-label">Total Users</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Active Systems</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">$0</span>
+                    <span class="metric-label">Revenue (30 days)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-card">
+            <h4><i class="fas fa-shield-alt card-icon"></i>System Health</h4>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <span class="metric-value status-active">1</span>
+                    <span class="metric-label">Activated Systems</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value status-locked">0</span>
+                    <span class="metric-label">Locked Systems</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value status-trial">1</span>
+                    <span class="metric-label">Trial Accounts</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Available Updates</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabbed Interface -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="showTab('add-company')">➕ Add Company</button>
+        <button class="tab-button" onclick="showTab('companies')">🏢 Companies</button>
+        <button class="tab-button" onclick="showTab('users-roles')">👥 Users & Roles</button>
+        <button class="tab-button" onclick="showTab('subscriptions')">💰 Subscriptions</button>
+        <button class="tab-button" onclick="showTab('system-control')">⚙️ System Control</button>
+        <button class="tab-button" onclick="showTab('updates')">🚀 Updates</button>
+        <button class="tab-button" onclick="showTab('analytics')">📊 Analytics</button>
+    </div>
+
+    <!-- Add Company Tab -->
+    <div id="add-company" class="tab-content active">
+        <div class="control-card">
+            <h4><i class="fas fa-plus card-icon"></i>Register New Company</h4>
+            <form method="post">
+                <input type="hidden" name="action" value="add_company">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Company Name: <span style="color: red;">*</span></label>
+                        <input type="text" name="company_name" placeholder="e.g., Acme Corporation" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Email: <span style="color: red;">*</span></label>
+                        <input type="email" name="company_email" placeholder="contact@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Name:</label>
+                        <input type="text" name="contact_name" placeholder="e.g., John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Phone:</label>
+                        <input type="tel" name="phone" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Industry:</label>
+                        <input type="text" name="industry" placeholder="e.g., Manufacturing, Healthcare">
+                    </div>
+                    <div class="form-group">
+                        <label>Company Size:</label>
+                        <select name="company_size">
+                            <option value="">Select Size</option>
+                            <option value="1-50">1-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="501-1000">501-1000 employees</option>
+                            <option value="1000+">1000+ employees</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Initial Feature Tier:</label>
+                        <select name="initial_tier">
+                            <option value="trial">Trial (30 days, 5 users)</option>
+                            <option value="basic">Basic ($49/mo, 25 users)</option>
+                            <option value="professional">Professional ($99/mo, 100 users)</option>
+                            <option value="enterprise">Enterprise ($199/mo, Unlimited)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>Auto-activate System:</label>
+                        <input type="checkbox" name="auto_activate" value="1"> Check to activate immediately
+                    </div>
+                </div>
+                <button type="submit" class="btn-saas btn-activate" style="margin-top: 15px;">Register Company</button>
+            </form>
+        </div>
+    </div>
+    <div id="companies" class="tab-content">
+        <div class="control-card">
+            <h4><i class="fas fa-building card-icon"></i>Company & License Management</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>License Key</th>
+                        <th>System Status</th>
+                        <th>Subscription</th>
+                        <th>Users</th>
+                        <th>Tier</th>
+                        <th>Expires</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                        <tr>
+                        <td>
+                            <strong>hardware world uganda</strong><br>
+                            <small>john</small>
+                        </td>
+                        <td><span class="license-key">57C2D84A2E87EAA6</span></td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>
+                            <span class="system-status badge-trial">Trial</span>                        </td>
+                        <td>0/5</td>
+                        <td>Trial</td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="activate_system">
+                                <input type="hidden" name="company_id" value="4">
+                                <button type="submit" class="btn-saas btn-activate" style="font-size: 11px; padding: 6px 10px;">Activate</button>
+                            </form>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_system">
+                                <input type="hidden" name="company_id" value="4">
+                                <input type="hidden" name="lock_reason" value="Administrative deactivation">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;" onclick="return confirm('Lock this system?')">Lock</button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this company and ALL associated data? This action cannot be undone!')">
+                                <input type="hidden" name="action" value="delete_company">
+                                <input type="hidden" name="delete_company_id" value="4">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>
+                            <strong>hw</strong><br>
+                            <small>Kalema Hubby</small>
+                        </td>
+                        <td><span class="license-key">1A116B0A6E8CDF6A</span></td>
+                        <td>
+                            <span class="system-status badge-inactive">⏸️ Inactive</span>                        </td>
+                        <td>
+                            <span class="system-status badge-trial">Trial</span>                        </td>
+                        <td>0/5</td>
+                        <td>Trial</td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="activate_system">
+                                <input type="hidden" name="company_id" value="1">
+                                <button type="submit" class="btn-saas btn-activate" style="font-size: 11px; padding: 6px 10px;">Activate</button>
+                            </form>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_system">
+                                <input type="hidden" name="company_id" value="1">
+                                <input type="hidden" name="lock_reason" value="Administrative deactivation">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;" onclick="return confirm('Lock this system?')">Lock</button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this company and ALL associated data? This action cannot be undone!')">
+                                <input type="hidden" name="action" value="delete_company">
+                                <input type="hidden" name="delete_company_id" value="1">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>
+                            <strong>leee world</strong><br>
+                            <small>Kalema Hubby</small>
+                        </td>
+                        <td><span class="license-key">61D35D3786CDC001</span></td>
+                        <td>
+                            <span class="system-status badge-inactive">⏸️ Inactive</span>                        </td>
+                        <td>
+                            <span class="system-status badge-trial">Trial</span>                        </td>
+                        <td>0/5</td>
+                        <td>Trial</td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="activate_system">
+                                <input type="hidden" name="company_id" value="3">
+                                <button type="submit" class="btn-saas btn-activate" style="font-size: 11px; padding: 6px 10px;">Activate</button>
+                            </form>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_system">
+                                <input type="hidden" name="company_id" value="3">
+                                <input type="hidden" name="lock_reason" value="Administrative deactivation">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;" onclick="return confirm('Lock this system?')">Lock</button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this company and ALL associated data? This action cannot be undone!')">
+                                <input type="hidden" name="action" value="delete_company">
+                                <input type="hidden" name="delete_company_id" value="3">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Users & Roles Tab -->
+    <div id="users-roles" class="tab-content">
+        <div class="control-grid">
+            <div class="control-card">
+                <h4><i class="fas fa-user-plus card-icon"></i>Create New User</h4>
+                <form method="post">
+                    <input type="hidden" name="action" value="create_user">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company:</label>
+                            <select name="company_id" required style="grid-column: span 2;">
+                                <option value="">Select Company</option>
+                                                                <option value="4">hardware world uganda</option>
+                                                                <option value="1">hw</option>
+                                                                <option value="3">leee world</option>
+                                                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Username: <span style="color: red;">*</span></label>
+                            <input type="text" name="username" placeholder="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email: <span style="color: red;">*</span></label>
+                            <input type="email" name="email" placeholder="user@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="tel" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label>Role:</label>
+                            <select name="role" required>
+                                <option value="user">User</option>
+                                <option value="technician">Technician</option>
+                                <option value="supervisor">Supervisor</option>
+                                <option value="maintenance manager">Manager</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Password: <span style="color: red;">*</span></label>
+                            <input type="password" name="password" placeholder="Temporary password" required style="grid-column: span 2;">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-saas btn-activate">Create User</button>
+                </form>
+            </div>
+
+            <div class="control-card">
+                <h4><i class="fas fa-shield-alt card-icon"></i>Create New Role</h4>
+                <form method="post">
+                    <input type="hidden" name="action" value="create_role">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Role Name: <span style="color: red;">*</span></label>
+                            <input type="text" name="role_name" placeholder="e.g., Equipment Manager" required style="grid-column: span 2;">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea name="role_description" placeholder="Role description..." rows="3" style="grid-column: span 2;"></textarea>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <label style="font-weight: 600; display: block; margin-bottom: 10px;">Permissions:</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                                <div><label><input type="checkbox" name="permissions" value="equipment"> Equipment Management</label></div>
+                                                                <div><label><input type="checkbox" name="permissions" value="inventory"> Inventory Management</label></div>
+                                                                <div><label><input type="checkbox" name="permissions" value="work_orders"> Work Orders</label></div>
+                                                                <div><label><input type="checkbox" name="permissions" value="reports"> Reports</label></div>
+                                                                <div><label><input type="checkbox" name="permissions" value="admin"> Admin Functions</label></div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-saas btn-update" style="margin-top: 15px;">Create Role</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Users List -->
+        <div class="control-card">
+            <h4><i class="fas fa-list card-icon"></i>All Users</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Last Login</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                        <tr>
+                        <td><strong>admin</strong></td>
+                        <td>admin@cmms.local</td>
+                        <td>hw</td>
+                        <td>Admin</td>
+                        <td>754974499</td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="1">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="1">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>debuguser_1776198395</strong></td>
+                        <td>debuguser_1776198395@example.com</td>
+                        <td>N/A</td>
+                        <td>Technician</td>
+                        <td>(555) 123-4567</td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="48">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="48">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>debuguser_1776198436</strong></td>
+                        <td>debuguser_1776198436@example.com</td>
+                        <td>N/A</td>
+                        <td>Technician</td>
+                        <td>(555) 123-4567</td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="49">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="49">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>developer</strong></td>
+                        <td></td>
+                        <td>N/A</td>
+                        <td>Developer</td>
+                        <td></td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Apr 14, 2026 20:25</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="38">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="38">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>kalema</strong></td>
+                        <td>frankkimbugwe680@gmail.com</td>
+                        <td>N/A</td>
+                        <td>Technician</td>
+                        <td></td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="4">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="4">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>manager</strong></td>
+                        <td>manager@cmms.local</td>
+                        <td>N/A</td>
+                        <td>Maintenance manager</td>
+                        <td></td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Apr 14, 2026 17:41</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="2">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="2">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>simpletest_1776198271</strong></td>
+                        <td>simpletest_1776198271@test.com</td>
+                        <td>N/A</td>
+                        <td>Technician</td>
+                        <td>(555) 123-4567</td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="47">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="47">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>testuser1776197638</strong></td>
+                        <td>test1776197638@example.com</td>
+                        <td>N/A</td>
+                        <td>Technician</td>
+                        <td>(555) 123-4567</td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="45">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="45">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td><strong>testuser1776198256</strong></td>
+                        <td>test1776198256@example.com</td>
+                        <td>N/A</td>
+                        <td>Technician</td>
+                        <td>(555) 123-4567</td>
+                        <td>
+                            <span class="system-status badge-active">✅ Active</span>                        </td>
+                        <td>Never</td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                <input type="hidden" name="action" value="deactivate_user">
+                                <input type="hidden" name="user_id" value="46">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px;">
+                                    Deactivate                                </button>
+                            </form>
+                            <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.')">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="user_id" value="46">
+                                <button type="submit" class="btn-saas btn-deactivate" style="font-size: 11px; padding: 6px 10px; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                    🗑️ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Subscriptions Tab -->
+    <div id="subscriptions" class="tab-content">
+        <div class="control-grid">
+            <div class="control-card">
+                <h4><i class="fas fa-credit-card card-icon"></i>Record Payment</h4>
+                <form method="post">
+                    <input type="hidden" name="action" value="record_payment">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company:</label>
+                            <select name="company_id" required>
+                                <option value="">Select Company</option>
+                                                                <option value="4">hardware world uganda</option>
+                                                                <option value="1">hw</option>
+                                                                <option value="3">leee world</option>
+                                                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Amount ($):</label>
+                            <input type="number" name="amount" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Period (Months):</label>
+                            <input type="number" name="period_months" value="1" min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Method:</label>
+                            <select name="payment_method">
+                                <option value="stripe">Stripe</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="manual">Manual</option>
+                                <option value="bank">Bank Transfer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-saas btn-payment">Record Payment</button>
+                </form>
+            </div>
+
+            <div class="control-card">
+                <h4><i class="fas fa-calendar-alt card-icon"></i>Update Subscription</h4>
+                <form method="post">
+                    <input type="hidden" name="action" value="update_subscription">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Company:</label>
+                            <select name="company_id" required>
+                                <option value="">Select Company</option>
+                                                                <option value="4">hardware world uganda</option>
+                                                                <option value="1">hw</option>
+                                                                <option value="3">leee world</option>
+                                                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <select name="subscription_status">
+                                <option value="trial">Trial</option>
+                                <option value="active">Active</option>
+                                <option value="expired">Expired</option>
+                                <option value="suspended">Suspended</option>
+                                <option value="grace_period">Grace Period</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Max Users:</label>
+                            <input type="number" name="max_users" value="5" min="1" max="1000">
+                        </div>
+                        <div class="form-group">
+                            <label>Feature Tier:</label>
+                            <select name="feature_tier">
+                                <option value="trial">Trial</option>
+                                <option value="basic">Basic</option>
+                                <option value="professional">Professional</option>
+                                <option value="enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Extend Days:</label>
+                            <input type="number" name="expires_days" value="30" min="1" max="3650">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-saas btn-update">Update Subscription</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="control-card">
+            <h4><i class="fas fa-history card-icon"></i>Recent Payments</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Method</th>
+                        <th>Period</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- System Control Tab -->
+    <div id="system-control" class="tab-content">
+        <div class="control-card">
+            <h4><i class="fas fa-cogs card-icon"></i>System Control Actions</h4>
+            <div class="control-grid">
+                <div class="control-card">
+                    <h5>🔄 System Reset</h5>
+                    <p>Reset company data to clean state</p>
+                    <form method="post">
+                        <input type="hidden" name="action" value="reset_company_data">
+                        <select name="reset_company_id" required style="margin-bottom: 10px;">
+                            <option value="">Select Company</option>
+                                                        <option value="4">hardware world uganda</option>
+                                                        <option value="1">hw</option>
+                                                        <option value="3">leee world</option>
+                                                    </select>
+                        <button type="submit" class="btn-saas btn-deactivate" onclick="return confirm('This will delete all work orders, equipment, and inventory data. Continue?')">Reset Data</button>
+                    </form>
+                </div>
+
+                <div class="control-card">
+                    <h5>📊 Health Check</h5>
+                    <p>Run system diagnostics</p>
+                    <a href="index.php?nav=health_check" class="btn-saas btn-update" style="display: inline-block; text-decoration: none; cursor: pointer;">Run Check</a>
+                </div>
+
+                <div class="control-card">
+                    <h5>🔧 Maintenance Mode</h5>
+                    <p>Enable/disable maintenance mode</p>
+                    <form method="post" action="maintenance_mode.php" style="display: inline;">
+                        <input type="hidden" name="action" value="toggle">
+                        <input type="hidden" name="message" value="System is under maintenance. Please check back soon.">
+                        <button type="submit" class="btn-saas btn-warning">Enable Maintenance Mode</button>
+                    </form>
+                    <div style="font-size: 12px; margin-top: 10px; color: #666;">
+                        🟢 System <strong>ONLINE</strong> — click above to enable maintenance                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updates Tab -->
+    <div id="updates" class="tab-content">
+        <div class="control-card">
+            <h4><i class="fas fa-rocket card-icon"></i>Create System Update</h4>
+            <form method="post">
+                <input type="hidden" name="action" value="create_system_update">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Version:</label>
+                        <input type="text" name="version" placeholder="1.0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Type:</label>
+                        <select name="update_type">
+                            <option value="bug_fix">Bug Fix</option>
+                            <option value="security">Security</option>
+                            <option value="feature">Feature</option>
+                            <option value="major">Major Release</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" name="description" placeholder="Brief description" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mandatory:</label>
+                        <input type="checkbox" name="is_mandatory" value="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Changelog:</label>
+                    <textarea name="changelog" rows="4" placeholder="Detailed changelog..."></textarea>
+                </div>
+                <button type="submit" class="btn-saas btn-update">Create Update</button>
+            </form>
+        </div>
+
+        <div class="control-card">
+            <h4><i class="fas fa-list card-icon"></i>System Updates</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Mandatory</th>
+                        <th>Release Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Analytics Tab -->
+    <div id="analytics" class="tab-content">
+        <div class="control-card">
+            <h4><i class="fas fa-chart-bar card-icon"></i>System Analytics</h4>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Total Metrics (24h)</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0.0%</span>
+                    <span class="metric-label">Avg System Load</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Expired Subscriptions</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">1</span>
+                    <span class="metric-label">Active Trials</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showTab(tabName) {
+    // Hide all tab contents
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => content.classList.remove('active'));
+
+    // Remove active class from all buttons
+    const buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(button => button.classList.remove('active'));
+
+    // Show selected tab
+    document.getElementById(tabName).classList.add('active');
+    event.target.classList.add('active');
+}
+</script></content>
+<parameter name="filePath">c:\free-cmms 0.04\admin_roles.php

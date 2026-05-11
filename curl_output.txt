@@ -1,0 +1,22 @@
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+
+  0      0   0      0   0      0      0      0                              0
+100    284   0      0 100    284      0   7998                              0
+100    284   0      0 100    284      0   7962                              0
+100    284   0      0 100    284      0   7937                              0
+HTTP/1.1 302 Found
+Host: 127.0.0.1:9002
+Date: Sat, 18 Apr 2026 17:10:12 GMT
+Connection: close
+X-Powered-By: PHP/8.5.2
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Location: purchase_orders.php?action=view&id=2
+Content-type: text/html; charset=UTF-8
+

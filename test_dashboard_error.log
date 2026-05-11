@@ -1,0 +1,1 @@
+[08-May-2026 13:29:04 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.

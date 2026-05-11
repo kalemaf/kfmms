@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM WebSphere Page Designer V3.5 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>
+Put Your Title Here
+</TITLE>
+</HEAD>
+<BODY style="margin-top:0;margin-bottom:0;margin-left:0; margin-right:0;" 
+      marginheight="0" marginwidth="0" onload="createTable()">
+<SCRIPT language="JAVASCRIPT" src="Browser.js"></SCRIPT>
+<SCRIPT language="JAVASCRIPT" src="BaseLayer.js"></SCRIPT>
+<SCRIPT language="JAVASCRIPT" src="Table.js"></SCRIPT>
+<SCRIPT>
+var myTable;
+var layer;
+var rows = 8;
+var cols = 4;
+function createTable()
+{
+  var columnWidths = [100,150,100,150];
+  var myData = new Array(rows);
+  var hoverHelpData = new Array(rows);
+  for (i=0;i<rows;i++)
+  {
+    myData[i] = new Array(cols);
+    hoverHelpData[i] = new Array(cols);
+    for (j=0;j<cols;j++) {
+        if (i==0)
+	{
+	  myData[i][j] = "hdr"+j;
+	}
+	else
+          myData[i][j] = "("+i+","+j+")";
+	hoverHelpData[i][j]="HoverHelp("+i+","+j+")";
+    }
+  }
+  myTable = new Table(rows,cols);
+  myTable.enableHoverHelp(true,hoverHelpData);
+  myTable.setTableData(myData);
+  myTable.setTablePos(50,200);
+  myTable.enableColumnHeaders(true);
+  myTable.enableRowHeaders(false);
+  myTable.enableRowSelection(true,"skyblue");
+  myTable.setColumnWidth(columnWidths);
+  myTable.setRowHeight(15);
+  myTable.setFont("",2);
+  myTable.paint();
+}
+</SCRIPT>
+<center><h2>Cross Browser DHTML Table control</h2></center>
+<font color="red">
+* Drag the mouse on a cell to resize the column width <br>
+* Hold the mouse on a cell to bring up the hover help
+</font>
+<form>
+<input type="button" name="b1" value="Hide 3" onClick="hideColumn(2);">
+<input type="button" name="b2" value="Show 3" onClick="showColumn(2);">
+<input type="button" name="b3" value="Swap 1,4" onClick="myTable.swapColumns(0,3);">
+<input type="button" name="b4" value="Add col" onClick="addMyColumn();">
+<input type="button" name="b8" value="Insert Col at 3" onClick="insertMyColumn(2);">
+<input type="button" name="b5" value="Del Col 3" onClick="deleteColumn(2);">
+<input type="button" name="b4" value="Add Row" onClick="addMyRow();">
+<input type="button" name="b8" value="Insert Row at 3" onClick="insertMyRow(2);">
+<input type="button" name="b5" value="Del Row 3" onClick="deleteMyRow(2);">
+<input type="button" name="b6" value="Sort asc3" onClick="myTable.sortOnColumn(2,'ascending');">
+<input type="button" name="b7" value="Sort desc3" onClick="myTable.sortOnColumn(2,'descending');">
+</form>
+<script>
+function hideColumn(col)
+{
+  myTable.hideColumn(col);
+}
+function showColumn(col)
+{
+  myTable.showColumn(col);
+}
+function addMyColumn()
+{
+  theNewColumn = new Array(rows);
+  theNewHelp = new Array(rows);
+  for (k=0;k<rows;k++)
+  {
+    if (k==0)
+      theNewColumn[k] = "hdr"+cols;
+    else
+      theNewColumn[k] = "n"+k;
+    theNewHelp[k] = "HoverHelp"+k;
+  }
+  cols++;
+  myTable.addColumn(theNewColumn,50,theNewHelp);
+}
+
+function addMyRow()
+{
+  theNewRow = new Array(cols);
+  theNewHelp = new Array(cols);
+  for (k=0;k<cols;k++)
+  {
+      theNewRow[k] = "rc"+k;
+      theNewHelp[k] = "HoverHelp"+k;
+  }
+  rows++;
+  myTable.addRow(theNewRow,theNewHelp);
+}
+
+function insertMyRow(index)
+{
+  theNewRow = new Array(cols);
+  theNewHelp = new Array(cols);
+  for (k=0;k<cols;k++)
+  {
+      theNewRow[k] = "rc"+k;
+      theNewHelp[k] = "HoverHelp"+k;
+  }
+  rows++;
+  myTable.insertRow(theNewRow,index,theNewHelp);
+}
+
+function deleteMyRow(index)
+{
+  myTable.removeRow(index);
+}
+
+function insertMyColumn(index)
+{
+  theNewColumn = new Array(rows);
+  theNewHelp = new Array(rows);
+  for (k=0;k<rows;k++)
+  {
+    if (k==0)
+      theNewColumn[k] = "hdr"+cols;
+    else
+      theNewColumn[k] = "n"+k;
+    theNewHelp[k] = "HoverHelp"+k;
+  }
+  cols++;
+  myTable.insertColumn(theNewColumn,50,index,theNewHelp);
+}
+
+function deleteColumn(index)
+{
+  cols--;
+  myTable.removeColumn(index);
+}
+</script>
+</BODY>
+</HTML>
+

@@ -1,0 +1,9 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^7.0",
+        "spomky-labs/otphp": "^11.4"
+    },
+    "scripts": {
+        "test": "php tests/run_tests.php"
+    }
+}

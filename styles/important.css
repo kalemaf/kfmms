@@ -1,0 +1,176 @@
+body {
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: 12px;
+	color: #606060;
+	background-color: #FFFFFF;
+}
+
+.important
+{
+	background-color: #F0F0F0;
+	margin-left: 3%;
+}
+H1 
+{
+	font-size: medium;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px 0px 1px 0px;
+	padding-left: 10px;
+	margin-right:20px;
+}
+
+table
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #F0F0F0;
+	border-collapse:collapse;
+	margin-left: 25px;
+	margin-bottom: 25px;
+}
+
+
+
+th	
+{
+	text-align:center;
+
+}
+.hot
+{
+	color:red;
+	font-weight: bold;
+}
+td
+{
+		font-size: 11px;
+		color: #606060;
+	background-color: #FFFFFF;
+	border-color: #F0F0F0;
+	border-style: solid;
+	border-width: 1px;
+		border-collapse: collapse;
+	padding: 2px 5px 2px 5px;
+}
+
+/* statistics section enhancements */
+.stats-range {
+	margin-left: 25px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* alternate shading for stats tables */
+.stats-range + table tr:nth-child(even) td {
+	background-color: #f9f9f9;
+}
+
+/* overall page improvements */
+.section {
+	background: #fff;
+	padding: 12px 15px;
+	margin: 0 25px 25px 25px;
+	border-radius: 4px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.important table {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+
+.important table th {
+	background-color: #e8e8e8;
+	font-weight: bold;
+	padding: 6px 8px;
+	border-bottom: 2px solid #bbb;
+}
+
+.important table td {
+	padding: 4px 8px;
+}
+
+.important table tr:nth-child(even) td {
+	background-color: #f9f9f9;
+}
+
+.important a {
+	color: #0066cc;
+	text-decoration: none;
+}
+
+.important a:hover {
+	text-decoration: underline;
+}
+
+.kpi-summary {
+	margin-top: 15px;
+}
+
+.kpi-chart {
+	width: 90%;
+	margin: 15px auto;
+}
+
+/* section headers */
+h1 {
+	font-size: 1.1em;
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px 0px 1px 0px;
+	padding-left: 10px;
+	margin-right:20px;
+	margin-top: 30px;
+}
+
+textarea,input,select {
+	background-color: #f0f0f0;
+	border-width: 1px;
+	border-color: #cccccc;
+	border-style: solid;
+	padding: 2px;
+	margin: 1px;
+	font-family: "arial";
+	font-size: 12px;
+	color: #333333;
+}
+
+/* Professional statistics display */
+.stats-section {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.stats-section h3 {
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.stats-range {
+    text-align: center;
+    font-weight: bold;
+    color: #495057;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.kpi-summary {
+    margin-top: 10px;
+}
+
+.kpi-chart {
+    margin-top: 10px;
+    text-align: center;
+}

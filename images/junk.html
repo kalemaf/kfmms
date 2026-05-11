@@ -1,0 +1,62 @@
+<form name="dynamiccombo"&gt;
+<select name="stage2" size="1"&gt;
+<option value="#">This is a Place Holder</option><option value="#">This is a Place Holder</option><option value="#">This is a Place Holder</option></select><input type="button" name="test" value="Go!"
+onClick="gothere()"&gt;
+</form><script>
+<!--
+
+//Dynamic combo box script- by javascriptkit.com
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+//Credit must stay intact for use
+
+  
+//DEFINE the group of links for display in the combo
+//EXTEND each array and its elements as needed
+//BE sure to follow the pattern revealed below
+var combo1=new Array()
+combo1[0]=new Option("JavaScript Kit","http://javascriptkit.com")
+combo1[1]=new Option("Dynamic Drive","http://www.dynamicdrive.com")
+combo1[2]=new Option("Freewarejava.com","http://www.freewarejava.com")
+combo1[3]=new Option("Free Web Templates","http://www.freewebtemplates.com")
+combo1[4]=new Option("Web Monkey","http://www.webmonkey.com")
+
+var combo2=new Array()
+combo2[0]=new Option("CNN","http://www.cnn.com")
+combo2[1]=new Option("MSNBC","http://www.msnbc.com")
+combo2[2]=new Option("BBC News","http://news.bbc.co.uk")
+combo2[3]=new Option("ABC News","http://www.abcnews.com")
+
+var combo3=new Array()
+combo3[0]=new Option("Hollywood.com","http://www.hollywood.com")
+combo3[1]=new Option("MTV","http://www.mtv.com")
+combo3[2]=new Option("ETOnline","http://etonline.com")
+
+
+var cacheobj=document.dynamiccombo.stage2
+
+function populate(x){
+for (m=cacheobj.options.length-1;m>0;m--)
+cacheobj.options[m]=null
+selectedarray=eval(x)
+for (i=0;i<selectedarray.length;i++)
+cacheobj.options[i]=new Option(selectedarray[i].text,selectedarray[i].value)
+cacheobj.options[0].selected=true
+}
+
+function gothere(){
+location=cacheobj.options[cacheobj.selectedIndex].value
+}
+
+//SHOW first combo by default
+populate(combo1)
+
+//-->
+</script>
+
+<!--SET up your links, and pass in the name of the group (ie: combo1) you wish to display for the link in question-->
+<a href="javascript:populate(combo1)">Webmaster sites</a> | <a href="javascript:populate(combo2)">News sites</a> | <a href="javascript:populate(combo3)">Entertainment</a>
+
+
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>

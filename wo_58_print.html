@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Work Order #58</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 15px;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .wo-number {
+            font-size: 14px;
+            color: #666;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .box {
+            border: 1px solid #bdc3c7;
+            padding: 15px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .box h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .row {
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+        }
+        .label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .value {
+            color: #555;
+            word-wrap: break-word;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .description-box {
+            border: 1px solid #bdc3c7;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            line-height: 1.8;
+        }
+        .print-button {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #bdc3c7;
+        }
+        @media print {
+            body {
+                margin: 0;
+            }
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Work Order</h1>
+        <div class="wo-number">WO# 58</div>
+    </div>
+
+    <!-- Administrative Info -->
+    <div class="container">
+        <div class="box">
+            <h3>Administrative Information</h3>
+            <div class="row">
+                <span class="label">Priority:</span>
+                <span class="value">3 Before specific date</span>
+            </div>
+            <div class="row">
+                <span class="label">Status:</span>
+                <span class="value">Requested</span>
+            </div>
+            <div class="row">
+                <span class="label">Reference #:</span>
+                <span class="value"></span>
+            </div>
+            <div class="row">
+                <span class="label">Requested By:</span>
+                <span class="value"></span>
+            </div>
+            <div class="row">
+                <span class="label">Approved By:</span>
+                <span class="value"></span>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>Dates</h3>
+            <div class="row">
+                <span class="label">Requested:</span>
+                <span class="value">2026-02-14</span>
+            </div>
+            <div class="row">
+                <span class="label">Date Needed:</span>
+                <span class="value"></span>
+            </div>
+            <div class="row">
+                <span class="label">Complete Date:</span>
+                <span class="value"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Details -->
+    <div class="section">
+        <h2>Job Details</h2>
+        <div class="container">
+            <div class="box">
+                <div class="row full-width">
+                    <span class="label">Equipment:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>Failure / Root Cause</h3>
+            <div class="description-box">
+                <div class="row full-width"><span class="label">Failure Code:</span><span class="value"></span></div>
+                <div class="row full-width"><span class="label">Root Cause:</span><span class="value"></span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>Coordinating Instructions</h3>
+            <div class="description-box">
+                None            </div>
+        </div>
+
+        <div class="box">
+            <h3>Work Description</h3>
+            <div class="description-box">
+                Automated CLI test WO for print verification            </div>
+        </div>
+    </div>
+
+    <!-- Completion Details -->
+    <div class="section">
+        <h2>Completion</h2>
+        <div class="container">
+            <div class="box">
+                <h3>Assigned Work</h3>
+                <div class="row full-width">
+                    <span class="label">Craftsman:</span>
+                    <span class="value"> </span>
+                </div>
+                <div class="row full-width">
+                    <span class="label">Hours:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Inspection</h3>
+                <div class="row full-width">
+                    <span class="label">Inspected By:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>Action Taken</h3>
+            <div class="description-box">
+                None            </div>
+        </div>
+    </div>
+
+    <!-- Materials and Attachments -->
+    <div class="section">
+        <h2>Materials & Attachments</h2>
+        <div class="box">
+            <h3>Materials</h3>
+                <div class="value">No materials recorded.</div>        </div>
+
+        <div class="box">
+            <h3>Attachments</h3>
+            <div class="value">No attachments.</div>        </div>
+    </div>
+
+    <!-- Downtime -->
+    <div class="section">
+        <h2>Downtime</h2>
+        <div class="box">
+            <div class="value">No downtime recorded.</div>        </div>
+    </div>
+
+    <!-- QA & Hours -->
+    <div class="section">
+        <h2>QA & Hours</h2>
+        <div class="box">
+            <div class="row full-width"><span class="label">Planned Hours:</span><span class="value"></span></div>
+            <div class="row full-width"><span class="label">Actual Hours:</span><span class="value"></span></div>
+            <div class="row full-width"><span class="label">QA By:</span><span class="value"></span></div>
+            <div class="row full-width"><span class="label">QA Date:</span><span class="value"></span></div>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    
+    <div class="print-button">
+        <button onclick="window.print()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Print Work Order</button>
+    </div>
+</body>
+</html>

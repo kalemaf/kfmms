@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial;
+            font-size: x-small;
+        }
+
+        .treeMenuDefault {
+            cursor: pointer;
+        }
+
+        .treeMenuBold {
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
+
+    <script src="./libraries/TreeMenu.js"></script>
+
+        <script>
+        function select_equipment(equipment_name, id) {
+            try {
+                var openerDoc = window.opener && window.opener.document ? window.opener.document : null;
+                if (!openerDoc) { window.close(); return; }
+
+                var form = openerDoc['work_order'] || (openerDoc.forms ? openerDoc.forms['work_order'] : null) || openerDoc['work_order'];
+                if (form) {
+                    if (form['equipment_name']) {
+                        form['equipment_name'].value = equipment_name;
+                    }
+                    if (form['equipment_id']) {
+                        form['equipment_id'].value = id;
+                    } else if (openerDoc.getElementById && openerDoc.getElementById('equipment_id')) {
+                        openerDoc.getElementById('equipment_id').value = id;
+                    }
+                } else {
+                    if (openerDoc.getElementById && openerDoc.getElementById('equipment_name')) {
+                        openerDoc.getElementById('equipment_name').value = equipment_name;
+                    }
+                    if (openerDoc.getElementById && openerDoc.getElementById('equipment_id')) {
+                        openerDoc.getElementById('equipment_id').value = id;
+                    }
+                }
+            } catch (e) {
+                // ignore errors
+            }
+            window.close();
+        }
+    </script>
+</head>
+
+<body>
+
+<script>
+objTreeMenu_1 = new TreeMenu("./images", "objTreeMenu_1", "_self", "treeMenuDefault", true, false);
+	newNode = objTreeMenu_1.addItem(new TreeNode('Repack Equipment', './images/folder.gif', null, false, true, '', '', './images/folder-expanded.gif'));
+	newNode.setEvent('onclick', 'return false;');
+	newNode_1 = newNode.addItem(new TreeNode('machine the shaft', './images/folder.gif', null, false, true, '', '', './images/folder-expanded.gif'));
+	newNode_1.setEvent('onclick', 'select_equipment(\"machine the shaft\", \"3\"); return false;');
+	newNode_2 = newNode.addItem(new TreeNode('expanded machine', './images/folder.gif', null, false, true, '', '', './images/folder-expanded.gif'));
+	newNode_2.setEvent('onclick', 'select_equipment(\"expanded machine\", \"4\"); return false;');
+	newNode_3 = newNode.addItem(new TreeNode('nail machine', './images/folder.gif', null, false, true, '', '', './images/folder-expanded.gif'));
+	newNode_3.setEvent('onclick', 'select_equipment(\"nail machine\", \"5\"); return false;');
+
+objTreeMenu_1.drawMenu();
+objTreeMenu_1.resetBranches();
+</script>
+</body>
+</html>

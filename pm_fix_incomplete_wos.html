@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PM Incomplete WOs - Quick Fix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; border-bottom: 3px solid #d32f2f; padding-bottom: 10px; }
+        .schedule-group {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #2196f3;
+            border-radius: 4px;
+        }
+        .schedule-group h3 { margin-top: 0; color: #0d47a1; }
+        .instance {
+            margin: 10px 0;
+            padding: 12px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .instance.old { background: #fff3e0; border-left: 3px solid #ff9800; }
+        .button {
+            padding: 8px 12px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        .button:hover { background: #45a049; }
+        .button.danger { background: #d32f2f; }
+        .button.danger:hover { background: #b71c1c; }
+        .status-warning {
+            color: #ff9800;
+            font-weight: bold;
+            padding: 8px;
+            background: #fff3e0;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .summary {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 4px;
+        }
+        .result { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .result.success { background: #e8f5e9; color: #2e7d32; }
+        .result.error { background: #ffebee; color: #c62828; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Incomplete PM Work Orders - Quick Fix</h1>
+        
+        <div class="summary">
+            <strong>What's Happening:</strong>
+            <p>Your daily PM schedules are generating multiple work orders (one per day). Some older ones were marked as Completed, but their linked pm_instances records still show "Pending". This causes the PM to display as "Pending" on the dashboard.</p>
+            <p><strong>Example:</strong> PM Schedule #24 "pump inspection" shows "Pending" because WO #48 (from 2 days ago) was never marked complete.</p>
+            <p><strong>Solution:</strong> Click "Complete Instance" below to mark these old work orders as done.</p>
+        </div>
+        
+        <div id="loadingMessage" class="summary" style="background: #fff3cd; border-color: #ffc107;">
+            ⏳ Loading incomplete work orders... please wait
+        </div>
+        
+        <div id="content" style="display: none;"></div>
+        
+        <div id="resultMessage"></div>
+    </div>
+    
+    <script>
+        // Load incomplete WOs via AJAX
+        async function loadIncompleteWOs() {
+            try {
+                // Set up form data to simulate server request
+                const response = await fetch('pm_complete_loose_wos.php', {
+                    method: 'GET',
+                    headers: { 'Accept': 'text/plain' }
+                });
+                
+                const text = await response.text();
+                console.log('Response:', text);
+                
+                // Parse the response to extract data
+                const lines = text.split('\n');
+                let currentSchedule = null;
+                let schedules = {};
+                
+                for (let line of lines) {
+                    // Match schedule lines
+                    const schedMatch = line.match(/Schedule #(\d+): (.+)/);
+                    if (schedMatch) {
+                        currentSchedule = {
+                            id: schedMatch[1],
+                            title: schedMatch[2],
+                            instances: []
+                        };
+                        schedules[currentSchedule.id] = currentSchedule;
+                    }
+                    
+                    // Match instance lines
+                    const instMatch = line.match(/Instance #(\d+) \((\d+) days old\)/);
+                    if (instMatch && currentSchedule) {
+                        const instance = {
+                            id: instMatch[1],
+                            daysOld: parseInt(instMatch[2]),
+                            wo_id: null,
+                            due_date: null,
+                            assigned: 'Unknown'
+                        };
+                        currentSchedule.instances.push(instance);
+                    }
+                    
+                    // Extract WO ID
+                    if (line.includes('WO #') && currentSchedule && currentSchedule.instances.length > 0) {
+                        const woMatch = line.match(/WO #(\d+):/);
+                        if (woMatch) {
+                            currentSchedule.instances[currentSchedule.instances.length - 1].wo_id = woMatch[1];
+                        }
+                    }
+                }
+                
+                // Render the results
+                let html = '';
+                let totalInstances = 0;
+                
+                for (let schedId in schedules) {
+                    const sched = schedules[schedId];
+                    html += '<div class="schedule-group">';
+                    html += '<h3>Schedule #' + sched.id + ': ' + sched.title + '</h3>';
+                    
+                    for (let inst of sched.instances) {
+                        totalInstances++;
+                        const isOld = inst.daysOld > 3;
+                        html += '<div class="instance' + (isOld ? ' old' : '') + '">';
+                        html += '<strong>Instance #' + inst.id + '</strong> (WO #' + inst.wo_id + ')';
+                        html += ' - ' + inst.daysOld + ' days old';
+                        if (isOld) {
+                            html += ' <span class="status-warning">⚠️ OLD - Verify before completing</span>';
+                        }
+                        html += '<br>';
+                        html += '<button class="button" onclick="completeInstance(' + inst.id + ', ' + sched.id + ', \'' + sched.title + '\')">✓ Complete Instance #' + inst.id + '</button>';
+                        html += '</div>';
+                    }
+                    
+                    html += '</div>';
+                }
+                
+                document.getElementById('loadingMessage').style.display = 'none';
+                document.getElementById('content').innerHTML = html;
+                document.getElementById('content').style.display = 'block';
+                
+                if (totalInstances === 0) {
+                    document.getElementById('content').innerHTML = '<div class="summary" style="background: #e8f5e9; border-color: #4caf50; color: #2e7d32;"><strong>✓ Great news!</strong> All PM work orders are up to date. No incomplete instances found.</div>';
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                document.getElementById('loadingMessage').innerHTML = '<strong style="color: red;">Error loading data:</strong> ' + err.toString();
+            }
+        }
+        
+        async function completeInstance(instanceId, schedId, schedTitle) {
+            const resultDiv = document.getElementById('resultMessage');
+            resultDiv.innerHTML = '<div class="result">⏳ Completing instance #' + instanceId + '...</div>';
+            
+            try {
+                // Make direct PHP call to complete the instance
+                const response = await fetch('pm_complete_loose_wos.php?action=complete_instance&instance=' + instanceId, {
+                    method: 'GET'
+                });
+                
+                const text = await response.text();
+                
+                if (text.includes('✓')) {
+                    resultDiv.innerHTML = '<div class="result success"><strong>Success!</strong> Instance #' + instanceId + ' has been marked as Completed. Schedule #' + schedId + ' (' + schedTitle + ') should now show the correct status. <a href="pm.php" style="color: #2e7d32; text-decoration: underline;">View PM Dashboard</a></div>';
+                    
+                    // Reload the list after 2 seconds
+                    setTimeout(loadIncompleteWOs, 2000);
+                } else {
+                    resultDiv.innerHTML = '<div class="result error"><strong>Error:</strong> ' + text.substring(0, 200) + '</div>';
+                }
+            } catch (err) {
+                resultDiv.innerHTML = '<div class="result error"><strong>Error:</strong> ' + err.toString() + '</div>';
+            }
+        }
+        
+        // Load on page load
+        window.addEventListener('load', loadIncompleteWOs);
+    </script>
+</body>
+</html>

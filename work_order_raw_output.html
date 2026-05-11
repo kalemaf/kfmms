@@ -1,0 +1,559 @@
+
+<h2>Work Orders Management</h2>
+
+
+<form method="get" style="margin-bottom: 12px; padding: 8px; border: 1px solid #ccc;">
+    <strong>Filter by status:</strong>
+    <select name="status">
+        <option value="" selected>All</option>
+                    <option value="Pending Approval">Pending Approval</option>
+                    <option value="Assigned">Assigned</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Suspended">Suspended</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Hot Job">Hot Job</option>
+            </select>
+    <button type="submit" style="margin-left:8px;">Apply Filter</button>
+</form>
+
+<form method="post" enctype="multipart/form-data" style="margin-bottom: 12px; padding: 8px; border: 1px dashed #999;">
+    <strong>Import work orders CSV</strong> (headers: descriptive_text,requestor,equipment,description,priority,wo_status,submit_date,mechanic_id,est_hours,needed_date)
+    <input type="file" name="csv_import" accept=".csv" required style="margin-left:8px;" />
+    <button type="submit">Import CSV</button>
+</form>
+
+
+<form method="post" enctype="multipart/form-data" style="margin-bottom: 20px; padding: 12px; border: 2px solid #666; background-color: #f9f9f9;" id="woForm">
+                <fieldset >
+    <h3>Edit Work Order #3</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr><th colspan="3" style="background-color: #e9ecef; padding: 10px; text-align: left;"><h5>Basic Information</h5></th></tr>
+    <script>
+        function loadSpares(equipmentId) {
+            const sparesDiv = document.getElementById('sparesContainer');
+            if (!equipmentId) {
+                sparesDiv.innerHTML = '<p style="color: #999;">Select equipment to see available spares</p>';
+                return;
+            }
+            fetch('api_spares.php?equipment_id=' + equipmentId)
+                .then(r => r.json())
+                .then(items => {
+                    if (!items || items.length === 0) {
+                        sparesDiv.innerHTML = '<p style="color: #999;">No spares or parts available for this equipment</p>';
+                        return;
+                    }
+                    
+                    let html = '<p><strong>Equipment Spares & Parts (Select & Enter Qty to Use):</strong></p>';
+                    
+                    // Group by type
+                    const spares = items.filter(item => item.type === 'spare');
+                    const parts = items.filter(item => item.type === 'part');
+                    
+                    if (spares.length > 0) {
+                        html += '<h6>Equipment-Specific Spares:</h6>';
+                        spares.forEach(s => {
+                            const usedQty = sparesUsed[s.id] || 0;
+                            html += `<div class="spare-item" style="margin-bottom: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 3px;">
+                                <label style="display: block; margin-bottom: 6px;">
+                                    <strong>${s.part_name}</strong> (${s.part_number}) - Available: ${s.quantity}
+                                </label>
+                                <label>Qty to Use: <input type="number" name="spares_${s.id}" min="0" max="${s.quantity}" value="${usedQty}" placeholder="0" id="spare_qty_${s.id}" style="width: 80px;"></label>
+                            </div>`;
+                        });
+                    }
+                    
+                    if (parts.length > 0) {
+                        html += '<h6>General Parts Inventory:</h6>';
+                        parts.forEach(p => {
+                            const usedQty = partsUsed[p.id] || 0;
+                            html += `<div class="spare-item" style="margin-bottom: 8px; padding: 8px; border: 1px solid #ddd; border-radius: 3px;">
+                                <label style="display: block; margin-bottom: 6px;">
+                                    <strong>${p.part_name}</strong> (${p.part_number}) - Available: ${p.quantity}
+                                </label>
+                                <label>Qty to Use: <input type="number" name="part_${p.id}" min="0" max="${p.quantity}" value="${usedQty}" placeholder="0" id="part_qty_${p.id}" style="width: 80px;"></label>
+                            </div>`;
+                        });
+                    }
+                    
+                    sparesDiv.innerHTML = html;
+                    // No more checkbox listeners needed - inputs are always visible
+                })
+                .catch(e => sparesDiv.innerHTML = '<p style="color: red;">Error loading spares: ' + e.message + '</p>');
+        }
+        
+        const sparesUsed = [];
+        const partsUsed = [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const equipSelect = document.querySelector('select[name="equipment"]');
+            if (equipSelect) {
+                equipSelect.addEventListener('change', function() {
+                    loadSpares(this.value);
+                });
+                // Initial load if equipment already selected
+                if (equipSelect.value) loadSpares(equipSelect.value);
+            }
+        });
+    </script>
+    <h3 style="margin-top: 0;">Edit Work Order #3</h3>
+            <input type="hidden" name="wo_id" value="3">
+        <p style="padding: 12px 15px; background-color: #e7f3ff; border-left: 4px solid #007bff; color: #004085; border-radius: 4px; margin-bottom: 20px;"><strong>Work Order ID:</strong> <span style="font-size: 16px; font-weight: bold;">WO #3</span></p>
+    
+    <style>
+        .wo-form-container { max-width: 900px; margin: 0 auto; }
+        .wo-form-section { margin-bottom: 20px; padding: 15px; background: white; border: 1px solid #dee2e6; border-radius: 5px; }
+        .wo-form-section h5 { color: #007bff; margin: 0 0 15px 0; padding-bottom: 10px; border-bottom: 2px solid #007bff; }
+        .wo-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px; }
+        .wo-form-row.full { grid-template-columns: 1fr; }
+        .wo-form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+        .wo-form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #333; font-size: 13px; }
+        .wo-form-group input, 
+        .wo-form-group select, 
+        .wo-form-group textarea { width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; font-family: Arial, sans-serif; font-size: 13px; }
+        .wo-form-group input:focus, 
+        .wo-form-group select:focus, 
+        .wo-form-group textarea:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 3px rgba(0,123,255,0.25); }
+        .wo-form-group textarea { resize: vertical; }
+        .wo-checkbox-group { margin-top: 8px; }
+        .wo-checkbox-group label { display: flex; align-items: center; font-weight: normal; margin: 0; }
+        .wo-checkbox-group input[type="checkbox"] { width: auto; margin-right: 8px; }
+        .wo-form-buttons { margin-top: 20px; padding-top: 15px; border-top: 1px solid #dee2e6; }
+        .wo-form-buttons button, 
+        .wo-form-buttons a { margin-right: 10px; padding: 10px 20px; font-weight: 600; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .wo-form-buttons button { background-color: #28a745; color: white; }
+        .wo-form-buttons button:hover { background-color: #218838; }
+        .wo-form-buttons a { background-color: #6c757d; color: white; }
+        .wo-form-buttons a:hover { background-color: #5a6268; }
+        .spares-section { margin-top: 15px; padding: 12px; background: #f0f8ff; border: 1px solid #b3d9ff; border-radius: 4px; }
+        .spare-item { margin: 8px 0; padding: 8px; background: white; border: 1px solid #ddd; border-radius: 3px; }
+        .spare-item label { display: flex; align-items: center; margin: 0; }
+        .spare-item input[type="checkbox"] { width: auto; margin-right: 10px; }
+    </style>
+
+    <div class="wo-form-container">
+        <div class="wo-form-section">
+            <h5>Basic Information</h5>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>Work Order Title *</label>
+                    <input type="text" name="descriptive_text" required value="PM: machine services" placeholder="Brief description of the work order">
+                </div>
+                <div class="wo-form-group">
+                    <label>Requestor *</label>
+                    <input type="text" name="requestor" required value="PM System" placeholder="Name of person requesting work">
+                </div>
+            </div>
+            <div class="wo-form-row full">
+                <div class="wo-form-group">
+                    <label>Description *</label>
+                    <textarea name="description" rows="4" placeholder="Detailed description of the work to be done">rubricate bearings</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Equipment & Assignment</h5>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>Equipment *</label>
+                    <select name="equipment" required>
+                        <option value="">-- Select Equipment --</option>
+                                                    <option value="1" >
+                                block making machine                            </option>
+                                                    <option value="2" >
+                                orange senior blockmaking machine                            </option>
+                                            </select>
+                </div>
+                <div class="wo-form-group">
+                    <label>Assigned Technician</label>
+                    <select name="mechanic_id">
+                        <option value="">-- Unassigned --</option>
+                                                    <option value="1" >
+                                admin                            </option>
+                                                    <option value="52" >
+                                bruce                            </option>
+                                                    <option value="38" >
+                                developer                            </option>
+                                                    <option value="2" >
+                                manager                            </option>
+                                            </select>
+                </div>
+            </div>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>Failure Mode</label>
+                    <select name="failure_mode">
+                        <option value="">-- Select Failure Mode --</option>
+                                                    <option value="Mechanical Failure" >
+                                Mechanical Failure                            </option>
+                                                    <option value="Electrical Failure" >
+                                Electrical Failure                            </option>
+                                                    <option value="Hydraulic Failure" >
+                                Hydraulic Failure                            </option>
+                                                    <option value="Pneumatic Failure" >
+                                Pneumatic Failure                            </option>
+                                                    <option value="Wear / Tear" >
+                                Wear / Tear                            </option>
+                                                    <option value="Control System Fault" >
+                                Control System Fault                            </option>
+                                                    <option value="Leakage" >
+                                Leakage                            </option>
+                                                    <option value="Overheating" >
+                                Overheating                            </option>
+                                                    <option value="Software / PLC" >
+                                Software / PLC                            </option>
+                                                    <option value="Other" >
+                                Other                            </option>
+                                            </select>
+                </div>
+                <div class="wo-form-group">
+                    <label>Maintenance Type</label>
+                    <select name="maintenance_type">
+                        <option value="">-- Select Maintenance Type --</option>
+                                                    <option value="Corrective" >
+                                Corrective                            </option>
+                                                    <option value="Preventive" >
+                                Preventive                            </option>
+                                                    <option value="Predictive" >
+                                Predictive                            </option>
+                                                    <option value="Inspection" >
+                                Inspection                            </option>
+                                                    <option value="Lubrication" >
+                                Lubrication                            </option>
+                                                    <option value="Other" >
+                                Other                            </option>
+                                            </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Dates & Scheduling</h5>
+            <div class="wo-form-row three">
+                <div class="wo-form-group">
+                    <label>Submit Date *</label>
+                    <input type="date" name="submit_date" required value="2026-04-22">
+                </div>
+                <div class="wo-form-group">
+                    <label>Needed Date</label>
+                    <input type="date" name="needed_date" value="2026-04-22">
+                </div>
+                <div class="wo-form-group">
+                    <label>Completion Date</label>
+                    <input type="date" name="complete_date" value="">
+                </div>
+            </div>
+            <div class="wo-form-row three">
+                <div class="wo-form-group">
+                    <label>Est. Hours</label>
+                    <input type="number" name="est_hours" min="0" placeholder="0" value="1">
+                </div>
+                <div class="wo-form-group">
+                    <label>Actual Hours</label>
+                    <input type="number" name="act_hours" min="0" placeholder="0" value="0">
+                </div>
+                <div class="wo-form-group">
+                    <label>Account Code</label>
+                    <input type="text" name="account" value="">
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Status & Priority</h5>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>Priority (1-5)</label>
+                    <input type="number" name="priority" min="1" max="5" value="1">
+                </div>
+                <div class="wo-form-group">
+                    <label>Status</label>
+                    <select name="wo_status">
+                                                    <option value="Pending Approval" >
+                                Pending Approval                            </option>
+                                                    <option value="Assigned" >
+                                Assigned                            </option>
+                                                    <option value="Approved" selected>
+                                Approved                            </option>
+                                                    <option value="Suspended" >
+                                Suspended                            </option>
+                                                    <option value="Completed" >
+                                Completed                            </option>
+                                                    <option value="Rejected" >
+                                Rejected                            </option>
+                                                    <option value="Hot Job" >
+                                Hot Job                            </option>
+                                            </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>SLA & Metrics</h5>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>SLA Due Date</label>
+                    <input type="date" name="sla_due_date" value="">
+                </div>
+                <div class="wo-form-group">
+                    <label>Down Time Hours</label>
+                    <input type="number" name="down_time_hours" min="0" step="0.01" placeholder="0.0" value="">
+                </div>
+            </div>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>Response Time (hours)</label>
+                    <input type="number" name="response_time" min="0" step="0.01" placeholder="0.0" value="">
+                </div>
+                <div class="wo-form-group">
+                    <label>Resolution Time (hours)</label>
+                    <input type="number" name="resolution_time" min="0" step="0.01" placeholder="0.0" value="">
+                </div>
+            </div>
+            <div class="wo-form-row">
+                <div class="wo-form-group wo-checkbox-group">
+                    <label>
+                        <input type="checkbox" name="audit_item" value="1" >
+                        This is an Audit Item
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Approvals & Inspection</h5>
+            <div class="wo-form-row">
+                <div class="wo-form-group">
+                    <label>Inspected By</label>
+                    <input type="text" name="inspected_by" value="System" placeholder="Inspector name">
+                </div>
+                <div class="wo-form-group">
+                    <label>Approved By</label>
+                    <input type="text" name="approval" value="Approved" placeholder="Approver name">
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Work Completion</h5>
+            <div class="wo-form-row full">
+                <div class="wo-form-group">
+                    <label>Coordinating Instructions</label>
+                    <textarea name="coordinating_instructions" rows="3" placeholder="Any special instructions or coordination needed">Auto-generated PM</textarea>
+                </div>
+            </div>
+            <div class="wo-form-row full">
+                <div class="wo-form-group">
+                    <label>Action Taken</label>
+                    <textarea name="action" rows="3" placeholder="Description of actions taken to complete this work order">Auto-generated PM master #1</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Equipment Spares</h5>
+            <div id="sparesContainer" class="spares-section">
+                <p style="color: #999; margin: 0;">Select equipment above to see available spares</p>
+            </div>
+        </div>
+
+        <div class="wo-form-section">
+            <h5>Consumables</h5>
+            <div id="consumablesContainer">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Select Consumable:</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; margin-bottom: 15px;">
+                        <select id="consumableSelect" style="padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                            <option value="">-- Select a Consumable --</option>
+                                                            <option value="2" data-cost="500000" data-available="30">
+                                    glease (30 available)
+                                </option>
+                                                    </select>
+                        <input type="number" id="consumableQty" min="1" step="0.1" placeholder="Qty" style="padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                        <input type="text" id="consumableCost" placeholder="Unit Cost" readonly style="padding: 8px; border: 1px solid #ced4da; border-radius: 4px; background-color: #f5f5f5;">
+                        <button type="button" onclick="addConsumableRow()" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">Add</button>
+                    </div>
+                </div>
+
+                <div id="consumablesTableContainer">
+                    <table id="consumablesTable" style="width: 100%; border-collapse: collapse; background: white; border: 1px solid #dee2e6; border-radius: 4px; margin-top: 10px;">
+                        <thead>
+                            <tr style="background-color: #f8f9fa; border-bottom: 1px solid #dee2e6;">
+                                <th style="padding: 10px; text-align: left; font-weight: 600; color: #333;">Consumable Name</th>
+                                <th style="padding: 10px; text-align: center; font-weight: 600; color: #333; width: 100px;">Quantity</th>
+                                <th style="padding: 10px; text-align: center; font-weight: 600; color: #333; width: 120px;">Unit Cost</th>
+                                <th style="padding: 10px; text-align: center; font-weight: 600; color: #333; width: 80px;">Notes</th>
+                                <th style="padding: 10px; text-align: center; font-weight: 600; color: #333; width: 50px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="consumablesTableBody">
+                                                    </tbody>
+                    </table>
+                </div>
+                                    <p id="noConsumablesMsg" style="color: #999; margin-top: 10px; text-align: center;">No consumables selected yet. Add consumables above.</p>
+                            </div>
+        </div>
+
+        <script>
+            let consumablesData = [{"id":2,"name":"glease","category":"Lubricants","subcategory":"solid glease","unit":"kg","current_stock":30,"cost_per_unit":500000}];
+            
+            function populateConsumableCost() {
+                const select = document.getElementById('consumableSelect');
+                const selectedOption = select.options[select.selectedIndex];
+                const costField = document.getElementById('consumableCost');
+                
+                if (select.value) {
+                    const cost = selectedOption.getAttribute('data-cost') || '0';
+                    costField.value = cost;
+                } else {
+                    costField.value = '';
+                }
+            }
+            
+            function addConsumableRow() {
+                const select = document.getElementById('consumableSelect');
+                const qtyField = document.getElementById('consumableQty');
+                const costField = document.getElementById('consumableCost');
+                
+                if (!select.value || !qtyField.value) {
+                    alert('Please select a consumable and enter a quantity.');
+                    return;
+                }
+                
+                const consumableId = parseInt(select.value);
+                const selectedOption = select.options[select.selectedIndex];
+                const consumableName = selectedOption.textContent.split(' (')[0];
+                const qty = parseFloat(qtyField.value);
+                const cost = parseFloat(costField.value) || 0;
+                
+                // Check if already in table
+                const existingRow = document.querySelector(`input[name="consumables_${consumableId}"]`);
+                if (existingRow) {
+                    alert('This consumable is already selected. You can modify its quantity directly in the table.');
+                    return;
+                }
+                
+                // Add to table
+                const tbody = document.getElementById('consumablesTableBody');
+                const row = document.createElement('tr');
+                row.style.borderBottom = '1px solid #f0f0f0';
+                row.innerHTML = `
+                    <td style="padding: 10px;">${consumableName}</td>
+                    <td style="padding: 10px; text-align: center;">
+                        <input type="number" name="consumables_${consumableId}" value="${qty}" min="0.1" step="0.1" style="width: 70px; padding: 5px; border: 1px solid #ced4da; border-radius: 3px; text-align: center;">
+                    </td>
+                    <td style="padding: 10px; text-align: center;">
+                        <input type="text" value="${cost.toFixed(2)}" readonly style="width: 100px; padding: 5px; border: 1px solid #ced4da; border-radius: 3px; background-color: #f5f5f5; text-align: center;">
+                    </td>
+                    <td style="padding: 10px; text-align: center;">
+                        <input type="text" name="consumable_notes_${consumableId}" placeholder="Notes" style="width: 100%; padding: 5px; border: 1px solid #ced4da; border-radius: 3px; font-size: 12px;">
+                    </td>
+                    <td style="padding: 10px; text-align: center;">
+                        <button type="button" onclick="removeConsumableRow(this)" style="padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">Remove</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+                
+                // Hide no consumables message if visible
+                document.getElementById('noConsumablesMsg').style.display = 'none';
+                
+                // Reset form fields
+                select.value = '';
+                qtyField.value = '';
+                costField.value = '';
+                select.focus();
+            }
+            
+            function removeConsumableRow(button) {
+                button.closest('tr').remove();
+                
+                // Show no consumables message if table is empty
+                const tbody = document.getElementById('consumablesTableBody');
+                if (tbody.querySelectorAll('tr').length === 0) {
+                    document.getElementById('noConsumablesMsg').style.display = 'block';
+                }
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const consumableSelect = document.getElementById('consumableSelect');
+                if (consumableSelect) {
+                    consumableSelect.addEventListener('change', populateConsumableCost);
+                }
+            });
+        </script>
+
+                    <div class="wo-form-buttons">
+                <button type="submit">
+                    ✎ Update Work Order                </button>
+                                    <a href="index.php?nav=work_orders&status=">Cancel</a>
+                            </div>
+                </fieldset>
+    </div>
+</form>
+
+    <p style="font-weight: bold;">Recent Work Orders: 3</p>
+    <table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 13px;">
+        <tr style="background-color: #f0f0f0;">
+            <th>WO ID</th>
+            <th>Title</th>
+            <th>Equipment</th>
+            <th>Technician</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>EST Hrs</th>
+            <th>Requestor</th>
+            <th>Created</th>
+            <th>Action</th>
+        </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                <td><a href="view_work_order.php?wo_id=3" style="color: blue; text-decoration: underline;">WO #3</a></td>
+                <td>PM: machine services</td>
+                <td>block making machine</td>
+                <td></td>
+                <td>Approved</td>
+                <td>1</td>
+                <td>1</td>
+                <td>PM System</td>
+                <td>2026-04-22</td>
+                <td>
+                                                                        <a href="index.php?nav=work_orders&edit=3&status=">Edit</a>
+                            &nbsp;|&nbsp;
+                                                <a href="index.php?nav=work_orders&complete=3&status=" title="Mark Completed" style="color: green; text-decoration: none; font-weight: 600;">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i> Complete
+                        </a>
+                                    </td>
+            </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                <td><a href="view_work_order.php?wo_id=2" style="color: blue; text-decoration: underline;">WO #2</a></td>
+                <td>brocken link</td>
+                <td>block making machine</td>
+                <td>bruce</td>
+                <td>Completed</td>
+                <td>1</td>
+                <td>1</td>
+                <td>kasujja operator</td>
+                <td>2026-04-19</td>
+                <td>
+                                            <span title="Completed"><i class="fas fa-lock" style="color:#6c757d;"></i> Completed</span>
+                                    </td>
+            </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                <td><a href="view_work_order.php?wo_id=1" style="color: blue; text-decoration: underline;">WO #1</a></td>
+                <td>PM: machine service</td>
+                <td>block making machine</td>
+                <td></td>
+                <td>Completed</td>
+                <td>2</td>
+                <td>2</td>
+                <td>production</td>
+                <td>2026-04-16</td>
+                <td>
+                                            <span title="Completed"><i class="fas fa-lock" style="color:#6c757d;"></i> Completed</span>
+                                    </td>
+            </tr>
+            </table>
+
+<p style="margin-top: 20px;">
+    <a href="index.php?nav=dashboard">Back to Dashboard</a>
+</p>

@@ -1,0 +1,205 @@
+body {
+	font-family: arial, helvetica, geneva, sans-serif;
+	font-size: 12px;
+	color: #0F0F0F;
+
+
+}
+
+.important
+{
+	background-color: #F0F0F0;
+	margin-left: 3%;
+}
+
+table
+{
+	border-style: none;
+}
+
+
+th	
+{
+	text-align:center;
+
+}
+td
+{
+		font-size: 12px;
+	color: #606060;
+	border-style: none;	
+	border-width: 1px;
+		border-collapse: collapse;
+}
+.auxilary
+{
+	font-family: "arial";
+	font-size: 10px;
+}
+
+form
+{
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+.smalltxt
+{
+	font-family: "arial";
+	font-size: 10px;
+}
+
+.minitxt
+{
+	font-family: "arial";
+	font-size: 9px;
+	font-style: italic;
+	color: red;
+}
+
+.basetxt
+{
+	font-family: "arial";
+	font-size: 11px;
+}
+
+
+
+
+
+.checkbox
+{
+	border-bottom: black 0px solid;
+	border-left: black 0px solid;
+	border-right: black 0px solid;
+	border-top: black 0px solid;
+	color: black;
+	font-family: "arial";
+	font-size: 12px;
+}
+
+.radio
+{
+	border-bottom: black 0px solid;
+	border-left: black 0px solid;
+	border-right: black 0px solid;
+	border-top: black 0px solid;
+	color: black;
+	font-family: "arial";
+	font-size: 10px;
+}
+
+.button
+{
+	background-color: #f7f7f7;
+	border-bottom: black 1px solid;
+	border-left: black 1px solid;
+	border-right: black 1px solid;
+	border-top: black 1px solid;
+	color: black;
+	font-family: "arial";
+	font-size: 12px;
+}
+
+textarea,input,select {
+	background-color: #f0f0f0;
+	border-width: 1px;
+	border-color: #cccccc;
+	border-style: solid;
+	padding: 2px;
+	margin: 1px;
+	font-family: "arial";
+	font-size: 12px;
+	color: #333333;
+}
+
+input[type=image]
+{
+	border-style: none;
+	background-color: #ffffff;
+	font-size: 12px;
+}
+
+input.save
+{
+	position:fixed;
+	top:0%;
+	right:0%;
+}
+
+
+
+
+/* 
+** The div.box... stuff comes from the following source:
+**
+** Plone style sheet for CSS2-capable browsers.
+** Copyright Alexander Limi, 2002 - http://limi.net
+**
+** Thanks to Geir B�kholt, Stian S�iland for input and guidance.
+**
+** Style sheet documentation can be found at http://plone.org/documentation
+**
+** Feel free to use whole or parts of this for your own designs, but give credit
+** where credit is due.
+**
+*/
+
+div.box h5 { 
+   /* background: #DEE7E;*/
+
+    border: 1px solid #8CACBB;
+    border-style: solid solid none solid;
+    background: #5961a0;
+ /*   color: #CCCCFF;*/
+    color: #DEDEDE;
+    padding: 0em 1em 0em 1em;
+    text-transform: lowercase;
+    display: inline;
+    font-size: x-small;
+    font-weight: bold;
+    height: 1em;
+}
+
+
+div.box {
+    border: none;
+    margin: 0em 0em 1.5em 0em;
+    padding: 0;
+
+}
+
+div.box div.body  {
+    background: transparent;
+    border-collapse: collapse;
+    border: 1px solid #8CACBB;
+
+}
+
+div.box .content {
+    padding: 1em;
+   
+
+}
+
+
+div.box a {text-decoration: none;}
+
+div.box a:hover {text-decoration: underline;}
+
+div.box .even {
+    background-color: #F7F9FA;
+}
+
+div.box .odd {
+    background-color: transparent;
+}
+
+div.spacer {
+	margin: 1em;
+}
+
+.currentNavItem {
+    color: Black;
+    font-weight: bold;
+}

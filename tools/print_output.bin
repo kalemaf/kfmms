@@ -1,0 +1,60 @@
+<br />
+<b>Deprecated</b>:  Using null as an array offset is deprecated, use an empty string instead in <b>C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php</b> on line <b>349</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageHeight" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>254</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageHeight" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>228</b><br />
+<br />
+<b>Deprecated</b>:  Using null as an array offset is deprecated, use an empty string instead in <b>C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php</b> on line <b>349</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "wo_id" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>23</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageWidth" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>1239</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageHeight" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>228</b><br />
+<br />
+<b>Deprecated</b>:  Using null as an array offset is deprecated, use an empty string instead in <b>C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php</b> on line <b>349</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageWidth" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>1285</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageWidth" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>1239</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageHeight" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>228</b><br />
+<br />
+<b>Deprecated</b>:  Using null as an array offset is deprecated, use an empty string instead in <b>C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php</b> on line <b>349</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "pageWidth" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>1285</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "priority" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>28</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "wo_status" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>29</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "ref_no" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>30</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "requestor" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>31</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "approval" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>32</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "submit_date" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>33</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "needed_date" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>34</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "equipment" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>42</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "coordinating_instructions" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>45</b><br />
+<br />
+<b>Deprecated</b>:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>1200</b><br />
+<br />
+<b>Warning</b>:  Attempt to read property "description" on null in <b>C:\free-cmms 0.04\print.php</b> on line <b>48</b><br />
+<br />
+<b>Deprecated</b>:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in <b>C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php</b> on line <b>1200</b><br />
+<br />
+<b>Warning</b>:  Undefined array key "t" in <b>C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php</b> on line <b>1238</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught Error: Call to undefined method Cezpdf::o_() in C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php:1239
+Stack trace:
+#0 C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php(1914): Cpdf-&gt;output()
+#1 C:\free-cmms 0.04\libraries\ezpdf\class.ezpdf.php(456): Cpdf-&gt;stream(Array)
+#2 C:\free-cmms 0.04\print.php(67): Cezpdf-&gt;ezStream()
+#3 {main}
+  thrown in <b>C:\free-cmms 0.04\libraries\ezpdf\class.pdf.php</b> on line <b>1239</b><br />

@@ -1,0 +1,1 @@
+<?php header("Content-Type: text/plain; charset=utf-8"); var_dump(class_exists("SQLite3")); var_dump(class_exists("PDO")); var_dump(in_array("sqlite3", get_loaded_extensions())); var_dump(in_array("pdo_sqlite", get_loaded_extensions())); var_dump(php_ini_loaded_file()); ?>

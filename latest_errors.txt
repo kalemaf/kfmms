@@ -1,0 +1,120 @@
+[14-Apr-2026 16:59:49 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 20:59:50 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 20:59:50 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 20:59:50 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 16:59:50 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 20:59:53 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 20:59:53 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 20:59:53 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 16:59:53 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin_roles"}
+[14-Apr-2026 20:59:56 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 20:59:56 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 20:59:56 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 16:59:56 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:00:34 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:00:34 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:00:34 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:00:34 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"pending_user_authorizations"}
+[14-Apr-2026 21:00:38 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:00:38 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:00:38 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:00:38 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"pending_user_authorizations"}
+[14-Apr-2026 21:00:40 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:00:40 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:00:40 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:00:40 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:00:59 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:00:59 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:00:59 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:00:59 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 17:00:59 America/New_York] PHP Warning:  Undefined property: SQLiteStmt::$num_rows in C:\free-cmms 0.04\access.php on line 51
+[14-Apr-2026 17:01:11 America/New_York] [Authorization Email] PHPMailer failed: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[14-Apr-2026 17:01:13 America/New_York] [Authorization Email] PHP mail() failed for recipient: kalemaf876@gmail.com
+[14-Apr-2026 21:01:22 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:01:22 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:01:22 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:01:22 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 21:01:25 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:01:25 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:01:25 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:01:25 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:02:00 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:02:00 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:02:00 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:02:00 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"pending_user_authorizations"}
+[14-Apr-2026 21:02:03 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:02:03 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:02:03 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:02:03 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:02:26 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:02:26 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:02:26 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:02:26 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 17:02:26 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined method SQLiteStmt::bind_result() in C:\free-cmms 0.04\access.php:256
+Stack trace:
+#0 C:\free-cmms 0.04\index.php(223): require_once()
+#1 {main}
+  thrown in C:\free-cmms 0.04\access.php on line 256
+[14-Apr-2026 21:04:22 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:04:22 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:04:22 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:04:22 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 21:05:40 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:05:40 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:05:40 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:05:40 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 21:05:47 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:05:47 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:05:47 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:05:47 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 17:06:09 America/New_York] Email error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[14-Apr-2026 21:06:09 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:06:09 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:06:09 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:06:09 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 21:10:22 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:10:22 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:10:22 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:10:22 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:10:50 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:10:50 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:10:50 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:10:50 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 17:10:50 America/New_York] PHP Warning:  Undefined property: SQLiteStmt::$num_rows in C:\free-cmms 0.04\access.php on line 51
+[14-Apr-2026 17:10:55 America/New_York] [Authorization Email] PHPMailer failed: The following From address failed: no-reply@example.com : MAIL FROM command failed,Authentication Required. For more information, go to
+ https://support.google.com/accounts/troubleshooter/2402620. 5b1f17b1804b1-488ede2519dsm83290345e9.8 - gsmtp
+,530,5.7.0 SMTP server error: MAIL FROM command failed Detail: Authentication Required. For more information, go to
+ https://support.google.com/accounts/troubleshooter/2402620. 5b1f17b1804b1-488ede2519dsm83290345e9.8 - gsmtp
+ SMTP code: 530 Additional SMTP info: 5.7.0
+[14-Apr-2026 17:10:57 America/New_York] [Authorization Email] PHP mail() failed for recipient: kalemaf876@gmail.com
+[14-Apr-2026 21:11:18 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:11:18 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:11:18 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:11:18 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 21:11:19 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:11:19 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:11:19 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:11:19 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:11:37 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:11:37 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:11:37 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:11:37 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"pending_user_authorizations"}
+[14-Apr-2026 21:11:39 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:11:39 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:11:39 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:11:39 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"admin"}
+[14-Apr-2026 21:12:07 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:12:07 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:12:07 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:12:07 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}
+[14-Apr-2026 17:12:07 America/New_York] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: users.email in C:\free-cmms 0.04\config.inc.php:248
+Stack trace:
+#0 C:\free-cmms 0.04\config.inc.php(248): PDOStatement->execute()
+#1 C:\free-cmms 0.04\access.php(267): SQLiteStmt->execute()
+#2 C:\free-cmms 0.04\index.php(223): require_once('C:\\free-cmms 0....')
+#3 {main}
+  thrown in C:\free-cmms 0.04\config.inc.php on line 248
+[14-Apr-2026 21:12:11 UTC] [SECURITY] .env file detected in production environment. Use environment variables instead of a .env file.
+[14-Apr-2026 21:12:11 UTC] [SECURITY] Production environment overriding unsafe debug and bypass settings.
+[14-Apr-2026 21:12:11 UTC] [SECURITY] Production environment disabling debug_mode, display_errors, and developer bypass license mode.
+[14-Apr-2026 17:12:11 America/New_York] [DEBUG] index.php SID=478058ed0cefa33ce7fd88fe9f46938f, SESSION={"csrf_token":"76029e7f91bd70c0c3030529a6b61dcfe76f88cafe8b6010e2458cf09f6810b8","user":"developer","user_id":38,"email":null,"phone":null,"country_code":"+256","role":"developer","group":"developer","permissions":[],"password_change_required":0,"nav":"users"}

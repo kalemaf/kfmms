@@ -1,0 +1,131 @@
+body {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: arial, helvetica, geneva, sans-serif;
+    color: #000000;
+    background: #5961a0;
+    padding: 0;
+    margin: 0;
+}
+
+/* The Pictsweet Logo right justified */
+div.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Navigational Plone Tabs (modified) */
+div.tabs {
+    position: absolute;
+    bottom: 11px;
+    left: 1em;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #000066;
+    white-space: nowrap;
+    color: #5961a0;
+    z-index: 2;
+}
+
+div.tabs a {
+    background: #5961a0;
+    border: 1px solid #8CACBB;
+    border-bottom: none;
+    color: #EDEDED;
+    font-weight: normal;
+    height: 2em;
+    margin: 5px 5px 0 0;
+    padding: 0 10px;
+    text-transform: lowercase;
+    text-decoration: none;
+}
+
+div.tabs form {
+    background: transparent;
+    color: #EDEDED;
+    font-weight: normal;
+    height: 1.2em;
+    margin-right: 0.5em;
+    padding: 0 2em;
+    text-transform: lowercase;
+}
+
+div.tabs a.selected {
+    background: #000066;
+    color: #EDEDED;
+    border: 1px solid #8CACBB;
+    border-bottom: 1px solid #000066;
+}
+
+div.tabs a.plain {
+    background: transparent;
+    color: #EDEDED;
+    border: 1px solid #8CACBB;
+    border-bottom: none;
+}
+
+div.tabs a:hover {
+    background: #DEE7EC;
+    border-color: #8CACBB;
+    border-bottom-color: #DEE7EC;
+    color: #436976;
+}
+
+div.personalBar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #000066;
+    color: #DEDEDE;
+    border-top: 1px solid #8CACBB;
+    font-size: 10px;
+    height: 15px;
+    z-index: 1;
+}
+
+div.personalBar a {
+    background: transparent;
+    color: #436976;
+    font-weight: normal;
+    margin-left: .5em;
+    text-decoration: none;
+}
+
+.location {
+    position: absolute;
+    left: 2em;
+    font-size: 10px;
+    text-transform: lowercase;
+    text-align: left;
+}
+
+.auth {
+    position: absolute;
+    text-align: right;
+    width: 48%;
+    left: 50%;
+    margin-right: 10em;
+    text-transform: lowercase;
+    font-size: 10px;
+    height: 15px;
+}
+
+input {
+    background-color: #F5F5F5;
+    border: 1px solid #000066;
+    padding: 0;
+    margin: 0 0 2px 0;
+    font-family: arial, sans-serif;
+    font-size: 10px;
+    color: #333333;
+    vertical-align: middle;
+    height: 18px;
+}
+
+input[type=submit] {
+    background: transparent;
+    color: black;
+}

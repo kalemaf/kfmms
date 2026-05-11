@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Force Generate WO - Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: 0 auto; }
+        .section { padding: 15px; margin: 15px 0; border: 1px solid #ddd; border-radius: 4px; }
+        .button { padding: 10px 20px; background: #d32f2f; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .button:hover { background: #b71c1c; }
+        .success { background: #e8f5e9; border: 1px solid #4caf50; color: #2e7d32; }
+        .error { background: #ffebee; border: 1px solid #d32f2f; color: #c62828; }
+        .loading { color: #ff9800; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>⚡ Force Generate Work Orders - Direct Test</h1>
+    
+    <div class="section">
+        <p>This page allows you to test the JSON output of force_generate_wo.php directly in your browser.</p>
+        <button class="button" onclick="testDirectJSON()">Test force_generate_wo.php?json=1</button>
+    </div>
+    
+    <div id="results"></div>
+    
+    <script>
+        async function testDirectJSON() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="section loading"><strong>Testing JSON output... please wait</strong></div>';
+            
+            try {
+                const response = await fetch('force_generate_wo.php?json=1', {
+                    method: 'GET',
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+
+                let html = '<div class="section">';
+                html += '<h3>Network Response</h3>';
+                html += '<p><strong>Status:</strong> ' + response.status + ' ' + response.statusText + '</p>';
+                html += '<p><strong>Content-Type:</strong> ' + response.headers.get('content-type') + '</p>';
+                html += '<p><strong>Response Length:</strong> ' + responseText.length + ' bytes</p>';
+                html += '<h4>Response Preview:</h4>';
+                html += '<pre>' + responseText.substring(0, 500).replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
+                html += '</div>';
+
+                // Try to parse as JSON
+                try {
+                    const data = JSON.parse(responseText);
+                    console.log('Parsed JSON:', data);
+                    
+                    html += '<div class="section success">';
+                    html += '<h3>✓ Valid JSON Received!</h3>';
+                    html += '<p><strong>Stats:</strong></p>';
+                    html += '<pre>' + JSON.stringify(data.stats, null, 2) + '</pre>';
+                    html += '<p><strong>Log Entries:</strong> ' + data.log.length + '</p>';
+                    html += '<p><strong>Success:</strong> ' + data.success + '</p>';
+                    html += '</div>';
+                } catch (parseErr) {
+                    console.error('JSON Parse Error:', parseErr);
+                    html += '<div class="section error">';
+                    html += '<h3>✗ Invalid JSON</h3>';
+                    html += '<p><strong>Error:</strong> ' + parseErr.message + '</p>';
+                    html += '<p>The response does not contain valid JSON. Check the response preview above.</p>';
+                    html += '<p><strong>First 200 chars:</strong></p>';
+                    html += '<pre>' + responseText.substring(0, 200).replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
+                    html += '<p><small>Check your browser\'s Console (F12) and server error logs for more details.</small></p>';
+                    html += '</div>';
+                }
+
+                resultsDiv.innerHTML = html;
+            } catch (fetchErr) {
+                console.error('Fetch Error:', fetchErr);
+                resultsDiv.innerHTML = '<div class="section error"><h3>✗ Fetch Error</h3><p>' + fetchErr.toString() + '</p><p>Check your browser console (F12) for details.</p></div>';
+            }
+        }
+    </script>
+</body>
+</html>

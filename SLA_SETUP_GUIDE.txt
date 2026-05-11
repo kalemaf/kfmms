@@ -1,0 +1,251 @@
+# SLA (Service Level Agreement) Tracking Setup Guide
+
+## Overview
+SLA tracking has been added to your Maintenix system to automatically monitor response and completion times for work orders. This helps track compliance with service level commitments.
+
+## What's New
+
+### Database Fields Added
+
+The following columns have been added to the `work_orders` table:
+
+| Field | Type | Description | Auto-Populated |
+|-------|------|-------------|-----------------|
+| `created_at` | TIMESTAMP | When work order was created | ✅ Yes (on INSERT) |
+| `acknowledged_at` | DATETIME | When WO was first assigned/acknowledged | ✅ Yes (on first status change to Assigned/In Progress) |
+| `completed_at` | DATETIME | When WO was marked Completed | ✅ Yes (on status change to Completed) |
+| `sla_response_limit` | INT | Hours allowed to acknowledge (default: 4) | Manual |
+| `sla_completion_limit` | INT | Hours allowed to complete (default: 24) | Manual |
+| `sla_status` | VARCHAR(20) | "On Time" or "Breached" | ✅ Yes (on Completed) |
+
+## Installation
+
+### Step 1: Run the Migration SQL
+
+Execute the migration file in your MySQL admin tool (phpMyAdmin, MySQL CLI, etc.):
+
+```sql
+-- Copy and run the contents of migrations/001_add_sla_fields.sql
+```
+
+**Via MySQL CLI:**
+```bash
+mysql -u your_user -p your_password free_cmms < migrations/001_add_sla_fields.sql
+```
+
+**Via phpMyAdmin:**
+1. Go to phpMyAdmin → Select `free_cmms` database
+2. Click "SQL" tab
+3. Copy-paste the SQL from `migrations/001_add_sla_fields.sql`
+4. Click "Go"
+
+### Step 2: Files Already Updated
+
+The following files have been automatically updated:
+- ✅ `save.php` - Now tracks SLA timestamps automatically
+- ✅ `libraries/sla_helper.php` - New helper functions for SLA calculations
+- ✅ `dashboard.php` - Can display SLA metrics (ready to add)
+
+## How It Works
+
+### Automatic Timestamp Population
+
+#### When Work Order is Created
+- `created_at` is automatically set to current timestamp
+
+#### When Status Changes to "Assigned" or "In Progress"
+- `acknowledged_at` is set to current timestamp (only if not already set)
+- This marks the "response time" for SLA purposes
+
+#### When Status Changes to "Completed"
+- `completed_at` is set to current timestamp
+- `sla_status` is automatically calculated:
+  - Response time = `acknowledged_at - created_at`
+  - If response time > `sla_response_limit` hours → "Breached"
+  - Completion time = `completed_at - created_at`
+  - If completion time > `sla_completion_limit` hours → "Breached"
+  - Otherwise → "On Time"
+
+## Configuration
+
+### Setting SLA Limits per Work Order
+
+When creating or editing a work order, you can set custom SLA limits:
+
+```
+sla_response_limit: 4    (default: 4 hours)
+sla_completion_limit: 24 (default: 24 hours)
+```
+
+**Default Values:**
+- Response SLA: 4 hours (from submission to assignment)
+- Completion SLA: 24 hours (from submission to completion)
+
+### To Change Default Values
+
+Edit the migration or directly in database:
+
+```sql
+-- Update default SLA limits for all new work orders
+ALTER TABLE work_orders MODIFY sla_response_limit INT DEFAULT 8;
+ALTER TABLE work_orders MODIFY sla_completion_limit INT DEFAULT 48;
+```
+
+## Available Functions
+
+Add this to your PHP files to use SLA functions:
+
+```php
+include 'libraries/sla_helper.php';
+```
+
+### Functions Reference
+
+#### Calculate SLA for a completed work order:
+```php
+$sla_status = calculate_sla_status($connection, $wo_id, $created_at, $acknowledged_at, 4, 24);
+// Returns: 'On Time' or 'Breached'
+```
+
+#### Get response time in hours:
+```php
+$response_hours = get_sla_response_time($connection, $wo_id);
+// Returns: float (e.g., 2.5 hours)
+```
+
+#### Get completion time in hours:
+```php
+$completion_hours = get_sla_completion_time($connection, $wo_id);
+// Returns: float (e.g., 18.75 hours)
+```
+
+#### Get SLA metrics for dashboard:
+```php
+$metrics = get_sla_metrics($connection);
+// Returns array:
+// [
+//   'sla_breached' => 3,
+//   'sla_ontime' => 25,
+//   'sla_percentage' => 89.29
+// ]
+```
+
+#### Recalculate all SLA statuses (bulk update):
+```php
+$updated = recalculate_all_sla_statuses($connection);
+// Returns: number of records updated
+```
+
+## Viewing SLA Data
+
+### In Work Order Form
+
+When a work order has these fields populated, you can display:
+- Response time breakdown
+- Completion time breakdown
+- SLA status (On Time / Breached)
+
+### In Reports
+
+Create reports showing:
+- SLA compliance percentage
+- Breached SLAs by technician
+- Breached SLAs by equipment
+- Average response and completion times
+
+### In Dashboard
+
+Display SLA metrics card:
+```php
+$metrics = get_sla_metrics($connection);
+echo "SLA Compliance: " . $metrics['sla_percentage'] . "%";
+echo "On Time: " . $metrics['sla_ontime'];
+echo "Breached: " . $metrics['sla_breached'];
+```
+
+## Example SQL Queries
+
+### Find all breached SLAs:
+```sql
+SELECT wo_id, created_at, completed_at, sla_status, 
+  TIMESTAMPDIFF(HOUR, created_at, completed_at) as hours_taken
+FROM work_orders
+WHERE sla_status = 'Breached'
+ORDER BY created_at DESC;
+```
+
+### Get SLA compliance by month:
+```sql
+SELECT 
+  DATE_TRUNC(completed_at, MONTH) as month,
+  SUM(CASE WHEN sla_status = 'On Time' THEN 1 ELSE 0 END) as on_time,
+  SUM(CASE WHEN sla_status = 'Breached' THEN 1 ELSE 0 END) as breached,
+  ROUND(SUM(CASE WHEN sla_status = 'On Time' THEN 1 ELSE 0 END) / COUNT(*) * 100, 2) as percentage
+FROM work_orders
+WHERE wo_status = 'Completed'
+GROUP BY DATE_TRUNC(completed_at, MONTH)
+ORDER BY month DESC;
+```
+
+### Get average response and completion times:
+```sql
+SELECT 
+  AVG(TIMESTAMPDIFF(HOUR, created_at, acknowledged_at)) as avg_response_hours,
+  AVG(TIMESTAMPDIFF(HOUR, created_at, completed_at)) as avg_completion_hours
+FROM work_orders
+WHERE wo_status = 'Completed'
+  AND acknowledged_at IS NOT NULL
+  AND completed_at IS NOT NULL;
+```
+
+## Troubleshooting
+
+### SLA fields not appearing in work order form
+- Check the migration has been run: `ALTER TABLE work_orders SHOW COLUMNS;`
+- Verify fields exist: `created_at`, `acknowledged_at`, `completed_at`, `sla_response_limit`, `sla_completion_limit`, `sla_status`
+
+### acknowledged_at not being set
+- Make sure status change is to "Assigned" or "In Progress"
+- Check `save.php` has been updated with SLA functions
+- Verify `libraries/sla_helper.php` exists and is included
+
+### sla_status showing incorrect value
+- Run recalculation: 
+  ```php
+  include 'libraries/sla_helper.php';
+  $count = recalculate_all_sla_statuses($connection);
+  echo "Updated $count records";
+  ```
+
+## Best Practices
+
+1. **Set realistic SLA limits** based on your business requirements
+2. **Review SLA breaches regularly** to identify bottlenecks
+3. **Track metrics by equipment** to identify problem areas
+4. **Track metrics by technician** to provide training/resources
+5. **Use SLA data for management reporting** to stakeholders
+6. **Adjust SLA limits** as your processes improve
+
+## Next Steps
+
+Optional enhancements you can add:
+
+1. **SLA Dashboard Widget** - Add SLA compliance chart to dashboard
+2. **SLA Reports** - Create detailed SLA reports by department/equipment
+3. **SLA Alerts** - Email alerts when SLA is about to breach
+4. **SLA History** - Track SLA limit changes over time
+5. **Escalation Rules** - Auto-escalate work orders nearing SLA limits
+
+## Support
+
+For issues or questions about SLA tracking:
+
+1. Check the `logs/` directory for any error messages
+2. Review `libraries/sla_helper.php` comments for function details
+3. Verify database migration completed successfully
+4. Check `save.php` includes `libraries/sla_helper.php`
+
+---
+
+**Created:** February 17, 2026
+**SLA Fields Version:** 1.0

@@ -1,0 +1,10 @@
+.env
+/sessions/
+/logs/
+/uploads/
+/private_attachments/
+/tests/sessions/
+/tests/logs/
+*.sql
+*.db
+vendor/

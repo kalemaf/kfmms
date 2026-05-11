@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMMS System - CMMS</title>
+
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; }
+        .cmms-header { background: #004276; color: #f6f6f6; border-bottom: 2px solid #002244; }
+        .cmms-header table { width: 100%; border-collapse: collapse; }
+        .cmms-header td { padding: 10px 15px; vertical-align: middle; }
+        .cmms-brand { font-size: 20px; font-weight: bold; }
+        .cmms-nav a { color: #f6f6f6; text-decoration: none; margin-right: 1em; }
+        .cmms-nav a.current { color: #ffdd57; font-weight: bold; }
+        .cmms-nav a:hover { text-decoration: underline; }
+        .cmms-user { text-align: right; font-size: 13px; }
+        .cmms-user a { color: #f6f6f6; text-decoration: none; margin-left: 10px; }
+        .cmms-user a:hover { text-decoration: underline; }
+        .container { padding: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="cmms-header">
+    <table>
+        <tr>
+            <td class="cmms-brand"><a href="index.php" style="color:#f6f6f6; text-decoration:none;">[CMMS System]</a></td>
+            <td class="cmms-nav">
+                                    <a href="index.php?nav=dashboard" class="">Dashboard</a>
+                                    <a href="index.php?nav=work_orders" class="current">Work Orders</a>
+                                    <a href="index.php?nav=equipment" class="">Equipment</a>
+                                    <a href="index.php?nav=inventory" class="">Inventory</a>
+                                    <a href="index.php?nav=purchase_requests" class="">Purchase Requests</a>
+                                    <a href="index.php?nav=purchase_orders" class="">Purchase Orders</a>
+                                    <a href="index.php?nav=goods_receipt" class="">Goods Receipt</a>
+                                    <a href="index.php?nav=analytics" class="">Analytics</a>
+                                    <a href="index.php?nav=lifecycle" class="">Lifecycle</a>
+                                    <a href="index.php?nav=reports" class="">Reports</a>
+                                                    <a href="index.php?nav=admin" class="">Administration</a>
+                            </td>
+            <td class="cmms-user">
+                Logged in as: admin (admin)                <a href="auth.php?logout=1">Logout</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="container">
+
+<h2>Work Orders Management</h2>
+
+    <p>No work orders found in the database.</p>
+    <p>You may need to create work orders or import data.</p>
+
+<p style="margin-top: 20px;">
+    <a href="index.php?nav=dashboard">Back to Dashboard</a>
+</p></body>
+</html>

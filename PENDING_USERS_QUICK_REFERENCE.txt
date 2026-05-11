@@ -1,0 +1,284 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                  📋 PENDING USERS DASHBOARD - QUICK REFERENCE                ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+🚀 ACCESS THE DASHBOARD
+══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│ METHOD 1: From Admin Panel                                  │
+│ • Login to admin_roles.php                                  │
+│ • Look for tabs at top                                      │
+│ • Click "📋 Pending Users" tab                              │
+│ • View all pending users                                    │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ METHOD 2: Direct URL                                        │
+│ • Go to: pending_users_dashboard.php                        │
+│ • (Admin/Developer access required)                         │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ METHOD 3: After Creating User                               │
+│ • Create user in admin_roles.php                            │
+│ • Success message appears with link                         │
+│ • Click "→ View in Pending Users Dashboard"                 │
+└─────────────────────────────────────────────────────────────┘
+
+
+📊 DASHBOARD LAYOUT
+══════════════════════════════════════════════════════════════════════════════
+
+    ┌──────────────────────────────────────────────────────┐
+    │         📋 Pending Users Dashboard                   │
+    │  Manage temporary passwords for user setup           │
+    ├──────────────────────────────────────────────────────┤
+    │                                                      │
+    │    Pending Users Count: [3]                          │
+    │                                                      │
+    ├──────────────────────────────────────────────────────┤
+    │                                                      │
+    │  Username | Email      | Password  | Company | Actions
+    │  ─────────┼────────────┼───────────┼─────────┼────────
+    │  joi      | joi@g...   | [copy]    |   29    | [action buttons]
+    │  kam      | kam@g...   | [copy]    |   29    | [action buttons]
+    │  alice    | alice@g... | [copy]    |   30    | [action buttons]
+    │                                                      │
+    └──────────────────────────────────────────────────────┘
+
+
+🎯 WHAT YOU CAN DO
+══════════════════════════════════════════════════════════════════════════════
+
+┌─ VIEW PASSWORDS ─────────────────────────────────────────┐
+│ • All pending user passwords visible in table             │
+│ • Passwords shown in clickable box                        │
+│ • Example: bt7*+ObFj3tF                                   │
+│ • Can view passwords anytime                              │
+└──────────────────────────────────────────────────────────┘
+
+┌─ COPY PASSWORDS ─────────────────────────────────────────┐
+│ • Click "📋 Copy" button next to password                 │
+│ • Password copied to clipboard automatically              │
+│ • Paste in email/message to user                          │
+│ • Repeat as many times as needed                          │
+└──────────────────────────────────────────────────────────┘
+
+┌─ SEND PASSWORDS ─────────────────────────────────────────┐
+│ • Click "📧 Send" button                                  │
+│ • Email sent to user with password                        │
+│ • (Email feature ready when configured)                   │
+│ • User receives password directly                         │
+└──────────────────────────────────────────────────────────┘
+
+┌─ RESET PASSWORDS ────────────────────────────────────────┐
+│ • Click "🔄 Reset" button                                 │
+│ • New temporary password generated                        │
+│ • Old password replaced in database                       │
+│ • New password shown immediately                          │
+│ • Can copy and send new password                          │
+└──────────────────────────────────────────────────────────┘
+
+┌─ ACTIVATE USERS ─────────────────────────────────────────┐
+│ • Click "✓ Activate" button                               │
+│ • User marked as "setup complete"                         │
+│ • Removed from pending users list                         │
+│ • Password change requirement removed                     │
+└──────────────────────────────────────────────────────────┘
+
+
+💡 COMMON SCENARIOS
+══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO 1: User Forgets Temporary Password
+─────────────────────────────────────────────────────────
+   1. User says: "I forgot my temporary password"
+   2. Go to Pending Users Dashboard
+   3. Find user in list
+   4. Click 🔄 Reset
+   5. New password generated automatically
+   6. Click 📋 Copy to copy new password
+   7. Send new password to user
+   8. User logs in with new password
+   ✓ Problem solved!
+
+SCENARIO 2: Send Password to Multiple New Employees
+──────────────────────────────────────────────────────
+   1. Create 5 new users in admin_roles.php
+   2. Go to Pending Users Dashboard
+   3. For each user:
+      • Click 📋 Copy
+      • Send via email to employee
+   4. All employees have password
+   5. Employees can now login
+   ✓ Onboarding complete!
+
+SCENARIO 3: Employee's First Day, Needs Password
+──────────────────────────────────────────────────────
+   1. Create employee account week before
+   2. On first day morning, employee arrives
+   3. Admin goes to Pending Users Dashboard
+   4. Finds employee in list
+   5. Clicks 📋 Copy
+   6. Messages password to employee
+   7. Employee logs in
+   8. System forces password change
+   9. Employee creates permanent password
+   10. Employee now fully onboarded
+   ✓ Ready to work!
+
+
+📋 BUTTON REFERENCE
+══════════════════════════════════════════════════════════════════════════════
+
+┌─ 📋 COPY ─────────────────────────────────────────────────┐
+│ Function: Copy password to clipboard                      │
+│ When to use: When sending password to user manually       │
+│ Result: Password copied, can paste anywhere              │
+│ Example: Send via email, Slack, Teams, etc.             │
+└──────────────────────────────────────────────────────────┘
+
+┌─ 📧 SEND ─────────────────────────────────────────────────┐
+│ Function: Send password via email                         │
+│ When to use: When you want system to email password      │
+│ Result: Email sent to user with password                 │
+│ Status: Ready to implement email service                 │
+└──────────────────────────────────────────────────────────┘
+
+┌─ 🔄 RESET ────────────────────────────────────────────────┐
+│ Function: Generate new temporary password                │
+│ When to use: If password compromised or user forgot      │
+│ Result: New password generated, old password invalid     │
+│ Confirmation: System asks to confirm                      │
+└──────────────────────────────────────────────────────────┘
+
+┌─ ✓ ACTIVATE ──────────────────────────────────────────────┐
+│ Function: Mark user as setup complete                    │
+│ When to use: When user has set permanent password        │
+│ Result: User removed from pending list                   │
+│ Effect: Password change requirement removed             │
+└──────────────────────────────────────────────────────────┘
+
+
+📊 STATISTICS AT TOP
+══════════════════════════════════════════════════════════════════════════════
+
+Pending Users Count
+   • Shows total number in one large card
+   • Updates automatically
+   • Shows how many need setup
+   • Example: "3 Pending Users"
+
+
+🔐 WHAT PASSWORDS ARE SHOWN
+══════════════════════════════════════════════════════════════════════════════
+
+✓ SHOWN in Pending Users Dashboard:
+   • Temporary password (plain text)
+   • Set at user creation by system
+   • Random 12-character string
+   • Examples: bt7*+ObFj3tF, aB3$xYzP2@km, etc.
+
+✗ NOT SHOWN in Dashboard:
+   • Password hash (encrypted, not readable)
+   • User's permanent password (after they set it)
+   • Any passwords for non-pending users
+
+Note: Dashboard only shows users with must_change_password = 1
+
+
+⏱️ WHEN USER DISAPPEARS FROM DASHBOARD
+══════════════════════════════════════════════════════════════════════════════
+
+User is REMOVED from pending list when:
+   ✓ User logs in and sets permanent password
+   ✓ Admin clicks "✓ Activate" button
+   ✓ Admin runs password change completion manually
+
+User stays in pending list until one of above happens.
+
+
+🆘 TROUBLESHOOTING
+══════════════════════════════════════════════════════════════════════════════
+
+Q: I don't see "📋 Pending Users" tab
+A: You need Developer or Admin role
+   Check: Login with developer account first
+
+Q: User not showing in dashboard
+A: User appears only if must_change_password = 1
+   Check if user was actually created in database
+
+Q: Password copy button not working
+A: Try manual copy (highlight and Ctrl+C)
+   Check browser console for errors
+
+Q: Can't reset password
+A: Permission denied - need admin/developer role
+   Check session and permissions
+
+Q: Need to view old/deleted user passwords
+A: Dashboard only shows ACTIVE pending users
+   Check database backup for historical data
+
+
+📱 DEVICE SUPPORT
+══════════════════════════════════════════════════════════════════════════════
+
+✓ Works on:
+   • Desktop computers
+   • Tablets (iPad, Android)
+   • Mobile phones
+   • Any modern web browser
+
+✓ Responsive design:
+   • Automatically adjusts to screen size
+   • Touch-friendly buttons on mobile
+   • Readable on all devices
+
+
+🎨 FEATURES AT A GLANCE
+══════════════════════════════════════════════════════════════════════════════
+
+   ✓ Professional purple gradient design
+   ✓ Real-time pending user count
+   ✓ One-click password copying
+   ✓ Password reset capability
+   ✓ Email send ready
+   ✓ User activation tracking
+   ✓ Creation date/time tracking
+   ✓ Company filtering (by ID)
+   ✓ User-friendly table layout
+   ✓ Mobile responsive
+   ✓ Dark/light mode ready
+   ✓ Secure admin-only access
+
+
+📈 FUTURE ENHANCEMENTS
+══════════════════════════════════════════════════════════════════════════════
+
+Coming soon (ready to implement):
+   • Email integration (send passwords via email)
+   • SMS integration (send passwords via SMS)
+   • Batch password reset
+   • CSV export of pending users
+   • Login attempt tracking
+   • Password expiration timer
+   • Admin notes/comments
+   • Webhook notifications
+   • Password strength meter
+   • 2FA setup requirements
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                    NOW YOU CAN SEE TEMPORARY PASSWORDS ANYTIME!
+
+      All pending user passwords are safely stored and accessible from
+             the Pending Users Dashboard. No more lost passwords!
+
+═══════════════════════════════════════════════════════════════════════════════

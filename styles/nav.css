@@ -1,0 +1,300 @@
+/* Modern Navigation Menu Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    padding: 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Category Boxes */
+div.box {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 200px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+}
+
+div.box:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+/* Category Header */
+div.box h5 {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 4px solid #3498db;
+    position: relative;
+}
+
+div.box h5::before {
+    content: "📁 ";
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* Specific icons for categories using classes */
+div.box h5.cat-backlog::before { content: "📋 "; }
+div.box h5.cat-assigned::before { content: "👤 "; }
+div.box h5.cat-finished::before { content: "✅ "; }
+div.box h5.cat-manage::before { content: "⚙️ "; }
+div.box h5.cat-createedit::before { content: "✏️ "; }
+div.box h5.cat-troublecalls::before { content: "🚨 "; }
+div.box h5.cat-reports::before { content: "📊 "; }
+div.box h5.cat-workrequest::before { content: "📝 "; }
+div.box h5.cat-purchaserequests::before { content: "🛒 "; }
+div.box h5.cat-purchaseorders::before { content: "📦 "; }
+div.box h5.cat-goodsreceipt::before { content: "📥 "; }
+div.box h5.cat-vendors::before { content: "🏢 "; }
+div.box h5.cat-administration::before { content: "🔧 "; }
+
+/* Body Container */
+div.box div.body {
+    background: white;
+    border-collapse: collapse;
+    border: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Content Area */
+div.box .content {
+    padding: 0;
+    flex: 1;
+}
+
+/* Links and Spans */
+div.box .content a,
+div.box .content span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f3f4;
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+div.box .content a:last-child,
+div.box .content span:last-child {
+    border-bottom: none;
+}
+
+/* Links Hover Effect */
+div.box .content a:hover {
+    background: linear-gradient(135deg, #ecf0f1 0%, #dfe6e9 100%);
+    color: #2980b9;
+    padding-left: 30px;
+    font-weight: 600;
+    border-left: 4px solid #3498db;
+}
+
+/* Link Icons */
+div.box .content a::before {
+    content: "→ ";
+    margin-right: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+div.box .content a:hover::before {
+    opacity: 1;
+}
+
+/* No Link (disabled) Item */
+div.box .content span.no_link {
+    color: #95a5a6;
+    cursor: not-allowed;
+    font-style: italic;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f3f4;
+    background: #f8f9fa;
+}
+
+div.box .content span.no_link:last-child {
+    border-bottom: none;
+}
+
+/* Alternating Row Colors */
+div.box .content.even {
+    background-color: #f8f9fa;
+}
+
+div.box .content.odd {
+    background-color: transparent;
+}
+
+/* Spacer */
+div.spacer {
+    margin: 1em;
+}
+
+/* Current Navigation Item */
+.currentNavItem {
+    color: #2980b9 !important;
+    font-weight: bold;
+    background-color: #ecf0f1 !important;
+}
+
+/* Form Inputs (for Edit # field) */
+div.box .content form {
+    margin: 0;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ecf0f1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+div.box .content form label {
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+div.box .content form input[type="text"] {
+    padding: 6px 8px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 12px;
+    flex: 1;
+    max-width: 60px;
+}
+
+div.box .content form input[type="button"],
+div.box .content form input[type="submit"] {
+    padding: 6px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+div.box .content form input[type="button"]:hover,
+div.box .content form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Button-style Links (Submit a Work Order, Submit a Work Request, etc.) */
+div.box .content a[onclick] {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-bottom: 2px solid #2980b9 !important;
+    margin: 8px 8px 0 8px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+div.box .content a[onclick]:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #1f618d 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+    padding-left: 18px;
+}
+
+/* Count Badge Styling */
+div.box .content a[data-count]::after,
+div.box .content span[data-count]::after {
+    content: attr(data-count);
+    background-color: #3498db;
+    color: white;
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: center;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+
+/* For span.no_link */
+div.box .content span.no_link[data-count="0"]::after {
+    background-color: #bdc3c7;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    div.box {
+        margin: 0;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    div.box h5 {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+
+    div.box .content a,
+    div.box .content span {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    div.box .content a:hover {
+        padding-left: 16px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    div.box {
+        page-break-inside: avoid;
+        box-shadow: none;
+    }
+
+    div.box .content a:hover {
+        background-color: transparent;
+    }
+}

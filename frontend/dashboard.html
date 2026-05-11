@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KPI Dashboard (React Demo)</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        .card {display:inline-block;padding:10px;margin:10px;border:1px solid #ccc;border-radius:5px;width:120px;text-align:center;}
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function Dashboard() {
+    const [metrics, setMetrics] = React.useState(null);
+
+    React.useEffect(() => {
+        fetch('/api/metrics.php')
+            .then(r=>r.json())
+            .then(setMetrics);
+    }, []);
+
+    if (!metrics) return <div>Loading...</div>;
+
+    return (
+        <div>
+            <h1>KPI React Demo</h1>
+            <div className="card">MTTR<br/>{metrics.mttr_hours.toFixed(2)}h</div>
+            <div className="card">MTBF<br/>{metrics.mtbf_hours.toFixed(2)}h</div>
+            <div className="card">Avail<br/>{(metrics.availability||0).toFixed(1)}%</div>
+            <div className="card">Uptime<br/>{metrics.uptime_hours.toFixed(1)}h</div>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Dashboard/>);
+</script>
+</body>
+</html>

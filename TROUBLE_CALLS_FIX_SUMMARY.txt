@@ -1,0 +1,182 @@
+================================================================================
+                    TROUBLE CALLS FIX - TECHNICAL SUMMARY
+================================================================================
+Date: March 17, 2026
+Issue: "Could not retrieve information" error when accessing Trouble Calls
+URL: http://127.0.0.1:8000/list.php?query_name=HJ_RECENT
+
+================================================================================
+PROBLEM DIAGNOSIS
+================================================================================
+
+Root Cause: Missing HJ_RECENT query definition in the database 'queries' table
+
+Error Details:
+- Application tried to load query named 'HJ_RECENT' from database
+- Query definition was not found in the queries table
+- list.php could not retrieve the view definition, resulting in error
+
+Initial Query Check:
+  SQL: SELECT * FROM queries WHERE name='HJ_RECENT'
+  Result: NO ROWS RETURNED ✗
+
+================================================================================
+SOLUTION APPLIED
+================================================================================
+
+Database: free_cmms
+Table: queries
+Action: INSERT NEW QUERY DEFINITION
+
+SQL Command Executed:
+-----------
+INSERT INTO queries (name, title, mode, `groups`, `sql`, col_attributes) VALUES (
+    'HJ_RECENT',
+    'Recent Trouble Calls',
+    'hot_job',
+    'manager,lead',
+    'SELECT tc.hj_id AS "Trouble Call", tc.date AS "Date", tc.short_description AS "Summary", 
+            IFNULL(mech.lname, "Unassigned") AS "Mechanic",
+            IFNULL(op.lname, "Unassigned") AS "Operator"
+     FROM trouble_calls AS tc
+     LEFT JOIN mechanics AS mech ON mech.id = tc.mechanic_id
+     LEFT JOIN mechanics AS op ON op.id = tc.operator_id
+     ORDER BY tc.date DESC
+     LIMIT 0, 13',
+    'a:5:{i:0;a:2:{s:5:\"style\";s:19:\"text-align: center;\";s:6:\"nowrap\";s:6:\"nowrap\";}i:1;a:0:{}i:2;a:0:{}i:3;a:0:{}i:4;a:0:{}}'
+);
+-----------
+
+Result: ✓ INSERT SUCCEEDED
+Execution Date/Time: March 17, 2026
+Status: RESOLVED
+
+================================================================================
+VERIFICATION
+================================================================================
+
+Post-Fix Verification Query:
+  SQL: SELECT * FROM queries WHERE name='HJ_RECENT'
+  Result: FOUND ✓
+  
+Query Details Confirmed:
+  - Name: HJ_RECENT
+  - Title: Recent Trouble Calls
+  - Mode: hot_job
+  - Groups: manager,lead
+  - SQL: Successfully stored (production query retrieving last 13 trouble calls)
+
+Visible Fields in Report:
+  1. Trouble Call (hj_id) - Unique trouble call identifier
+  2. Date - When trouble call was created (DESC sorted, newest first)
+  3. Summary (short_description) - Brief description of the issue
+  4. Mechanic - Assigned mechanic name (if assigned)
+  5. Operator - Operator who reported it (if recorded)
+
+Data Source Links:
+  - Primary: trouble_calls table (stores incidents)
+  - Secondary: mechanics table (LEFT JOIN for mechanic/operator names)
+  
+Limit: 13 most recent trouble calls displayed
+
+================================================================================
+TEST RESULTS
+================================================================================
+
+Script: fix_hj_recent_now.php
+Location: c:\free-cmms 0.04\
+Status: ✓ EXECUTED SUCCESSFULLY
+
+Test Output:
+  ✓ Cleared existing HJ_RECENT (if any)
+  ✓ INSERT succeeded
+  ✓ VERIFIED - HJ_RECENT now exists
+  ✓ SUCCESS - Trouble Calls should now work!
+
+Next Steps for User:
+  1. Clear browser cache (or do a hard refresh: Ctrl+Shift+R)
+  2. Navigate to: http://127.0.0.1:8000/list.php?query_name=HJ_RECENT
+  3. OR Click: Home > Trouble Calls
+  4. Recent trouble calls should now display correctly
+
+================================================================================
+RELATED ISSUES FIXED IN THIS SESSION
+================================================================================
+
+1. PM-WO Linking Error (PREVIOUS FIX)
+   - Problem: Clicking PM shows "There is no work order #25"
+   - Root Cause: work_order.php only searched wo_id field; PM stored database id#
+   - Solution: Updated work_order.php query to check BOTH id AND wo_id fields
+   - Status: ✓ RESOLVED
+
+2. PHP Deprecation Warnings (PREVIOUS FIX)
+   - Problem: htmlspecialchars(NULL) warnings in pending_items_dashboard.php
+   - Root Cause: PM-generated work orders with NULL wo_id fields
+   - Solution: Added null coalescing operator ($wo['wo_id'] ?? '')
+   - Status: ✓ RESOLVED
+
+3. WO #7 Missing from Work Orders List (PENDING)
+   - Problem: Auto-generated PMs create work orders but wo_id field is NULL
+   - Root Cause: Earlier PM generation didn't assign proper wo_id numbers
+   - Solution: Use fix_missing_wo_ids.php script (not yet executed)
+   - Status: ⏳ AWAITING EXECUTION
+   - File: c:\free-cmms 0.04\fix_missing_wo_ids.php
+
+4. HJ_RECENT Missing Query (NOW FIXED)
+   - Problem: "Could not retrieve information" error for Trouble Calls
+   - Root Cause: HJ_RECENT query definition missing from database
+   - Solution: Insert complete query definition with proper SQL
+   - Status: ✓ RESOLVED (THIS FIX JUST COMPLETED)
+
+================================================================================
+DATABASE INFORMATION
+================================================================================
+
+Server: MySQL 8.0.45
+Database Name: free_cmms
+Host: 127.0.0.1
+Port: 3306 (default)
+
+Queries Table Status:
+  Total Queries on File: 12 (before fix)
+  Available Query Names:
+    - NEW_TO_YOU
+    - WO_ALL
+    - WO_ASSIGNED
+    - WO_AUDIT
+    - WO_BACKLOG
+    - WO_CLOSED
+    - WO_FINISHED
+    - WO_PENDING
+    - WO_RECENT
+    - WO_RECENT_CLOSED
+    - WO_SUSPENDED
+    - WR_ALL
+    + HJ_RECENT (NOW ADDED)
+
+================================================================================
+SYSTEM CONFIGURATION
+================================================================================
+
+PHP Version: 8.5.2
+Web Root: c:\free-cmms 0.04\
+Application: Maintenix CMMS (Computerized Maintenance Management System)
+License/Version: free-cmms 0.04
+
+Configuration Files Updated:
+  - config.inc.php (contains database credentials)
+  - No changes to config required for this fix
+
+Queue of Outstanding Fixes:
+  - fix_missing_wo_ids.php (awaiting execution to add wo_id to NULL records)
+
+================================================================================
+SUPPORT CONTACT INFORMATION
+================================================================================
+
+For additional issues or questions, contact: kalemaf876@gmail.com
+Escalation: Detailed logs saved for troubleshooting
+
+================================================================================
+END OF SUMMARY
+================================================================================

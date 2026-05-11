@@ -1,0 +1,181 @@
+========================================
+AUTOMATED PM GENERATION SETUP
+Windows Task Scheduler Configuration
+========================================
+
+OVERVIEW:
+This setup automates the PM generation process so that when PM schedules become due,
+work orders are automatically created without manual intervention.
+
+WHAT WILL HAPPEN:
+- Every day at 1:00 AM (customizable), the script runs generate_pm.php
+- Any PM schedules with next_due <= today will have work orders created
+- All activity is logged in logs/scheduler.log
+- No email or notifications needed - happens silently in background
+
+========================================
+STEP 1: Verify PHP Path
+========================================
+
+1. Open Command Prompt (cmd.exe)
+2. Type: php --version
+3. If successful, note the PHP path (typically C:\php\php.exe or similar)
+
+If this fails:
+- PHP may not be in your system PATH
+- Alternative: Use full path like C:\php\php.exe instead of just 'php'
+
+========================================
+STEP 2: Create Windows Task Scheduler Task
+========================================
+
+Method A: Using GUI (easier)
+------------------------------
+1. Press Windows Key + R
+2. Type: taskschd.msc (press Enter)
+3. Click "Create Basic Task..." on the right panel
+
+Task Details:
+  Name: "Maintenix PM Generation"
+  Description: "Automatically generate PM work orders daily"
+  Trigger: Daily at 1:00 AM (or preferred time)
+
+Action:
+  Program/script: C:\php\php.exe
+  Add arguments: -f "C:\free-cmms 0.04\schedule_pm_generation.php"
+  (Note: Adjust paths if PHP is installed elsewhere)
+
+Conditions:
+  ✓ Leave defaults as-is
+
+Settings:
+  ✓ Allow task to be run on demand
+  ✓ Run task as soon as possible after scheduled time is missed
+  ✓ If the task fails, restart every: 1 minute (up to 3 times)
+  ✓ Stop the task if it runs longer than: 1 hour
+
+Method B: Using Command Prompt (for advanced users)
+-----------------------------------------------------
+Run this command in Command Prompt (as Administrator):
+
+schtasks /create /tn "Maintenix PM Generation" /tr "C:\php\php.exe -f C:\free-cmms 0.04\schedule_pm_generation.php" /sc daily /st 01:00:00 /f
+
+Note: Replace C:\php\php.exe with your actual PHP path if different
+
+========================================
+STEP 3: Test the Task
+========================================
+
+Manual Test (verify it works):
+1. Open Task Scheduler
+2. Find "Maintenix PM Generation" in the task list
+3. Right-click → Run
+4. Wait 10 seconds
+5. Check logs/scheduler.log - you should see output like:
+
+   [2026-02-17 01:15:30] PM Generation Scheduler Started
+   Starting PM generation...
+   Generating PM for schedule id: X - Title...
+   Created work order id: NNN
+   [2026-02-17 01:15:35] PM Generation Scheduler Completed Successfully
+
+If the log is empty or shows errors:
+- Check that paths are correct in the task
+- Verify PHP can access the generate_pm.php file
+- Check file permissions on logs/ directory (should be writable)
+
+========================================
+STEP 4: Monitor the Scheduled Task
+========================================
+
+Check logs/scheduler.log regularly:
+- View in notepad or any text editor
+- Entries are timestamped for troubleshooting
+- File will grow over time (consider resetting weekly if needed)
+
+View Task Scheduler History:
+1. Open Task Scheduler
+2. Find "Maintenix PM Generation"
+3. Click "History" tab
+4. Green checkmark = success, Red X = failure
+
+========================================
+STEP 5: Customize Schedule (if desired)
+========================================
+
+To change the run time:
+1. Open Task Scheduler
+2. Right-click "Maintenix PM Generation"
+3. Select "Properties"
+4. Go to "Triggers" tab
+5. Edit the trigger to set new time
+
+Common options:
+- Every day at 1:00 AM (default) - runs once daily
+- Every day at 12:00 AM and 6:00 AM - runs twice daily
+- Every weekday at 1:00 AM - skips weekends
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Task doesn't run:
+✓ Check Task Scheduler shows it as "Enabled" (not "Disabled")
+✓ Verify time/date is correct on your computer
+✓ Check logs/scheduler.log for error messages
+✓ Run manually first to test (Step 3 above)
+
+PHP command fails:
+✓ Use full path to PHP: C:\php\php.exe (or wherever PHP is installed)
+✓ Test in Command Prompt: php -f "C:\free-cmms 0.04\schedule_pm_generation.php"
+✓ If that fails, check PHP is in system PATH
+
+No work orders being created:
+✓ Check that schedules have next_due <= today
+✓ Verify schedules are marked active=1
+✓ Check logs/completion_workflow.log for PM generation activity
+
+Permission denied errors:
+✓ Ensure logs/ directory is writable
+✓ Run Command Prompt as Administrator
+✓ Check Windows user permissions on Maintenix folder
+
+========================================
+STEP 6: (Optional) Disable/Remove Task
+========================================
+
+To disable (pause) the task temporarily:
+1. Task Scheduler → Find task → Right-click → Disable
+
+To remove the task completely:
+1. Task Scheduler → Find task → Right-click → Delete
+
+To run manually anytime (without waiting for schedule):
+1. Task Scheduler → Find task → Right-click → Run
+
+========================================
+VERIFICATION CHECKLIST
+========================================
+
+After setup, verify:
+☐ Task appears in Task Scheduler
+☐ Task shows "Enabled" status
+☐ Manual test completed successfully (Step 3)
+☐ logs/scheduler.log shows recent entries
+☐ PM schedules with next_due=today generate work orders
+☐ Dashboard shows new work orders after run
+
+========================================
+SUPPORT
+========================================
+
+If you encounter issues:
+1. Check logs/scheduler.log for error messages
+2. Check Task Scheduler History for failure codes
+3. Run manual test and verify generate_pm.php works standalone
+4. Review PHP error logs in your PHP installation directory
+
+For more info about Windows Task Scheduler:
+https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page
+
+========================================

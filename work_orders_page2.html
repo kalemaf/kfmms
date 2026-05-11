@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMMS System - CMMS</title>
+
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; }
+        .cmms-header { background: #004276; color: #f6f6f6; border-bottom: 2px solid #002244; }
+        .cmms-header table { width: 100%; border-collapse: collapse; }
+        .cmms-header td { padding: 10px 15px; vertical-align: middle; }
+        .cmms-brand { font-size: 20px; font-weight: bold; }
+        .cmms-nav a { color: #f6f6f6; text-decoration: none; margin-right: 1em; }
+        .cmms-nav a.current { color: #ffdd57; font-weight: bold; }
+        .cmms-nav a:hover { text-decoration: underline; }
+        .cmms-user { text-align: right; font-size: 13px; }
+        .cmms-user a { color: #f6f6f6; text-decoration: none; margin-left: 10px; }
+        .cmms-user a:hover { text-decoration: underline; }
+        .container { padding: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="cmms-header">
+    <table>
+        <tr>
+            <td class="cmms-brand"><a href="index.php" style="color:#f6f6f6; text-decoration:none;">[CMMS System]</a></td>
+            <td class="cmms-nav">
+                                    <a href="index.php?nav=dashboard" class="">Dashboard</a>
+                                    <a href="index.php?nav=work_orders" class="current">Work Orders</a>
+                                    <a href="index.php?nav=equipment" class="">Equipment</a>
+                                    <a href="index.php?nav=inventory" class="">Inventory</a>
+                                    <a href="index.php?nav=purchase_requests" class="">Purchase Requests</a>
+                                    <a href="index.php?nav=purchase_orders" class="">Purchase Orders</a>
+                                    <a href="index.php?nav=goods_receipt" class="">Goods Receipt</a>
+                                    <a href="index.php?nav=analytics" class="">Analytics</a>
+                                    <a href="index.php?nav=lifecycle" class="">Lifecycle</a>
+                                    <a href="index.php?nav=reports" class="">Reports</a>
+                                                    <a href="index.php?nav=admin" class="">Administration</a>
+                            </td>
+            <td class="cmms-user">
+                Logged in as: admin (admin)                <a href="auth.php?logout=1">Logout</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="container">
+
+<h2>Work Orders Management</h2>
+
+
+<form method="get" style="margin-bottom: 12px; padding: 8px; border: 1px solid #ccc;">
+    <strong>Filter by status:</strong>
+    <select name="status">
+        <option value="" selected>All</option>
+                    <option value="Pending Approval">Pending Approval</option>
+                    <option value="Assigned">Assigned</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Suspended">Suspended</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Hot Job">Hot Job</option>
+            </select>
+    <button type="submit" style="margin-left:8px;">Apply Filter</button>
+</form>
+
+<form method="post" enctype="multipart/form-data" style="margin-bottom: 12px; padding: 8px; border: 1px dashed #999;">
+    <strong>Import work orders CSV</strong> (headers: descriptive_text,requestor,equipment,description,priority,wo_status,submit_date)
+    <input type="file" name="csv_import" accept=".csv" required style="margin-left:8px;" />
+    <button type="submit">Import CSV</button>
+</form>
+
+
+<form method="post" style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;">
+    <h3>Create New Work Order</h3>
+        <div><label>Title: <input type="text" name="descriptive_text" required style="width: 100%;" value=""></label></div>
+    <div><label>Requestor: <input type="text" name="requestor" required style="width: 100%;" value=""></label></div>
+    <div><label>Equipment: <input type="text" name="equipment" style="width: 100%;" value=""></label></div>
+    <div><label>Description: <textarea name="description" rows="3" style="width: 100%;"></textarea></label></div>
+    <div><label>Priority: <input type="number" name="priority" min="1" max="5" value="1" style="width: 100px;"></label></div>
+    <div><label>Status: <select name="wo_status"><option value="Pending Approval" selected>Pending Approval</option><option value="Assigned">Assigned</option><option value="Approved">Approved</option><option value="Suspended">Suspended</option><option value="Completed">Completed</option><option value="Rejected">Rejected</option><option value="Hot Job">Hot Job</option></select></label></div>
+    <div><label>Submit Date: <input type="date" name="submit_date" required value="2026-03-25"></label></div>
+    <div><button type="submit" style="margin-top: 10px;">Create Work Order</button></div>
+    </form>
+
+    <p>Recent Work Orders: 10</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+        <tr style="background-color: #f0f0f0;">
+            <th>WO ID</th>
+            <th>Description</th>
+            <th>Equipment</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Assigned To</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+                <tr>
+            <td>14</td>
+            <td>Test WO</td>
+            <td>Test Equipment</td>
+            <td>Pending Approval</td>
+            <td>3</td>
+            <td>admin</td>
+            <td>2026-03-25</td>
+            <td><a href="index.php?nav=work_orders&edit=14&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>15</td>
+            <td>pm</td>
+            <td>expanded</td>
+            <td>Assigned</td>
+            <td>1</td>
+            <td>kalema</td>
+            <td>2026-03-25</td>
+            <td><a href="index.php?nav=work_orders&edit=15&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>16</td>
+            <td>Added in feature</td>
+            <td>Poly 1</td>
+            <td>Assigned</td>
+            <td>2</td>
+            <td>admin</td>
+            <td>2026-03-25</td>
+            <td><a href="index.php?nav=work_orders&edit=16&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>16</td>
+            <td>Added in feature</td>
+            <td>Poly 1</td>
+            <td>Assigned</td>
+            <td>2</td>
+            <td>admin</td>
+            <td>2026-03-25</td>
+            <td><a href="index.php?nav=work_orders&edit=16&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>17</td>
+            <td>CSV test</td>
+            <td>Poly 1</td>
+            <td>Assigned</td>
+            <td>2</td>
+            <td>admin</td>
+            <td>2026-03-25</td>
+            <td><a href="index.php?nav=work_orders&edit=17&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>17</td>
+            <td>CSV test</td>
+            <td>Poly 1</td>
+            <td>Assigned</td>
+            <td>2</td>
+            <td>admin</td>
+            <td>2026-03-25</td>
+            <td><a href="index.php?nav=work_orders&edit=17&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>13</td>
+            <td>searsch.php gives an error</td>
+            <td></td>
+            <td>Completed</td>
+            <td>4</td>
+            <td>spongebob</td>
+            <td>2003-08-19</td>
+            <td><a href="index.php?nav=work_orders&edit=13&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>6</td>
+            <td>The very 1st FC work order</td>
+            <td></td>
+            <td>Completed</td>
+            <td>2</td>
+            <td>spongebob</td>
+            <td>2003-08-17</td>
+            <td><a href="index.php?nav=work_orders&edit=6&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>8</td>
+            <td>Replace light bulb</td>
+            <td></td>
+            <td>Pending Approval</td>
+            <td>2</td>
+            <td>spongebob</td>
+            <td>2003-08-17</td>
+            <td><a href="index.php?nav=work_orders&edit=8&status=">Edit</a></td>
+        </tr>
+                <tr>
+            <td>9</td>
+            <td>test request</td>
+            <td></td>
+            <td>Pending Approval</td>
+            <td>1</td>
+            <td>spongebob</td>
+            <td>2003-08-17</td>
+            <td><a href="index.php?nav=work_orders&edit=9&status=">Edit</a></td>
+        </tr>
+            </table>
+
+<p style="margin-top: 20px;">
+    <a href="index.php?nav=dashboard">Back to Dashboard</a>
+</p></body>
+</html>
