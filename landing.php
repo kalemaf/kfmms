@@ -396,7 +396,7 @@ if (!empty($_SESSION['user'])) {
                     <div class="hero-pill-row">
                         <div class="hero-pill">
                             <strong>24/7 ready</strong>
-                            Secure team access and asset visibility.
+                            Secure team access and asset visibility always.
                         </div>
                         <div class="hero-pill">
                             <strong>Automated PMs</strong>
