@@ -1,15 +1,144 @@
 {
   "version": 2,
+  "env": {
+    "DB_TYPE": "@db_type",
+    "DB_HOST": "@db_host",
+    "DB_USER": "@db_user",
+    "DB_PASS": "@db_pass",
+    "DB_NAME": "@db_name",
+    "DB_PORT": "3306",
+    "APP_URL": "@app_url",
+    "APP_ENV": "production"
+  },
   "builds": [
     {
-      "src": "**/*.php",
-      "use": "@vercel/php"
+      "src": "index.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "landing.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "auth.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "license_gate.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "paypal_return.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "api/**/*.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "inventory/**/*.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "maintenance/**/*.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "reports/**/*.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "work_orders/**/*.php",
+      "use": "@vercel/php@^0.6.4"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "images/**/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "fonts/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "^/images/(.*)$",
+      "dest": "/images/$1",
+      "headers": {"Cache-Control": "public, max-age=86400"}
+    },
+    {
+      "src": "^/fonts/(.*)$",
+      "dest": "/fonts/$1",
+      "headers": {"Cache-Control": "public, max-age=86400"}
+    },
+    {
+      "src": "^/(.+\\.js)$",
+      "dest": "/$1",
+      "headers": {"Cache-Control": "public, max-age=3600"}
+    },
+    {
+      "src": "^/(.+\\.css)$",
+      "dest": "/$1",
+      "headers": {"Cache-Control": "public, max-age=3600"}
+    },
+    {
+      "src": "^/(.+\\.mp4)$",
+      "dest": "/$1",
+      "headers": {"Cache-Control": "public, max-age=604800"}
+    },
+    {
+      "src": "^/api/(.*)$",
+      "dest": "/api/$1.php"
+    },
+    {
+      "src": "^/landing/?$",
+      "dest": "/landing.php"
+    },
+    {
+      "src": "^/auth/?$",
+      "dest": "/auth.php"
+    },
+    {
+      "src": "^/license.*/?$",
+      "dest": "/license_gate.php"
+    },
+    {
+      "src": "^/paypal.*/?$",
+      "dest": "/paypal_return.php"
+    },
+    {
+      "src": "^/inventory/(.*)$",
+      "dest": "/inventory/$1.php"
+    },
+    {
+      "src": "^/maintenance/(.*)$",
+      "dest": "/maintenance/$1.php"
+    },
+    {
+      "src": "^/reports/(.*)$",
+      "dest": "/reports/$1.php"
+    },
+    {
+      "src": "^/work_orders/(.*)$",
+      "dest": "/work_orders/$1.php"
+    },
+    {
+      "src": "^/(.*)$",
+      "dest": "/index.php?path=$1"
     }
-  ]
+  ],
+  "functions": {
+    "*.php": {
+      "memory": 512,
+      "maxDuration": 30
+    }
+  }
 }
