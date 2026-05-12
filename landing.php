@@ -72,9 +72,9 @@ if (!empty($_SESSION['user'])) {
         :root {
             color-scheme: dark;
             color: #f8fafc;
-            background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.26), transparent 18%),
-                        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.18), transparent 19%),
-                        linear-gradient(180deg, #050b16 0%, #08131f 45%, #0d1728 100%);
+            background: radial-gradient(circle at top left, rgba(0, 64, 135, 0.35), transparent 18%),
+                        radial-gradient(circle at bottom right, rgba(255, 140, 31, 0.25), transparent 19%),
+                        linear-gradient(180deg, #001f3f 0%, #002854 45%, #003d6b 100%);
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
@@ -86,9 +86,9 @@ if (!empty($_SESSION['user'])) {
             margin: 0;
             min-height: 100vh;
             color: #e2e8f0;
-            background: radial-gradient(circle at 16% 18%, rgba(56,189,248,0.22), transparent 28%),
-                        radial-gradient(circle at 88% 12%, rgba(244, 63, 94, 0.14), transparent 22%),
-                        linear-gradient(180deg, #020617 0%, #09131f 60%, #0f1d2f 100%);
+            background: radial-gradient(circle at 16% 18%, rgba(0, 100, 200, 0.28), transparent 28%),
+                        radial-gradient(circle at 88% 12%, rgba(255, 140, 31, 0.2), transparent 22%),
+                        linear-gradient(180deg, #000f1a 0%, #001630 60%, #002a4d 100%);
         }
 
         body, html {
@@ -131,12 +131,39 @@ if (!empty($_SESSION['user'])) {
             width: 46px;
             height: 46px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #0ea5e9, #f59e0b);
+            background: linear-gradient(135deg, #0040a6, #ff8c1f);
             display: grid;
             place-items: center;
-            color: #0f172a;
+            color: #fff;
             font-size: 1.15rem;
             font-weight: 900;
+        }
+
+        .logo-image {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 100;
+            width: 120px;
+            height: auto;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 1080px) {
+            .logo-image {
+                width: 90px;
+                top: 16px;
+                right: 16px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .logo-image {
+                width: 70px;
+                top: 12px;
+                right: 12px;
+            }
         }
 
         .nav-links {
@@ -170,15 +197,15 @@ if (!empty($_SESSION['user'])) {
             gap: 10px;
             padding: 10px 16px;
             border-radius: 999px;
-            background: rgba(59,130,246,0.12);
-            border: 1px solid rgba(59,130,246,0.18);
-            color: #bfdbfe;
+            background: rgba(0, 100, 200, 0.15);
+            border: 1px solid rgba(0, 100, 200, 0.25);
+            color: #5eb3ff;
             font-size: 0.93rem;
             margin-bottom: 24px;
         }
 
         .eyebrow i {
-            color: #60a5fa;
+            color: #0040a6;
         }
 
         h1 {
@@ -216,9 +243,9 @@ if (!empty($_SESSION['user'])) {
         }
 
         .button.primary {
-            background: linear-gradient(135deg, #0ea5e9, #f59e0b);
-            color: #0f172a;
-            box-shadow: 0 20px 50px rgba(14,165,233,0.22);
+            background: linear-gradient(135deg, #0040a6, #ff8c1f);
+            color: #fff;
+            box-shadow: 0 20px 50px rgba(0, 100, 200, 0.25);
         }
 
         .button.secondary {
@@ -260,7 +287,7 @@ if (!empty($_SESSION['user'])) {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top right, rgba(14,165,233,0.12), transparent 35%);
+            background: radial-gradient(circle at top right, rgba(0, 100, 200, 0.15), transparent 35%);
             pointer-events: none;
             z-index: 1;
         }
@@ -282,9 +309,9 @@ if (!empty($_SESSION['user'])) {
             gap: 8px;
             padding: 10px 16px;
             border-radius: 999px;
-            background: rgba(14, 165, 233, 0.2);
-            border: 1px solid rgba(14, 165, 233, 0.4);
-            color: #7dd3fc;
+            background: rgba(0, 100, 200, 0.25);
+            border: 1px solid rgba(0, 100, 200, 0.5);
+            color: #5eb3ff;
             font-size: 0.9rem;
             font-weight: 600;
         }
@@ -370,8 +397,8 @@ if (!empty($_SESSION['user'])) {
             display: grid;
             place-items: center;
             border-radius: 12px;
-            background: rgba(59,130,246,0.16);
-            color: #7dd3fc;
+            background: rgba(0, 100, 200, 0.2);
+            color: #5eb3ff;
         }
 
         .features,
@@ -417,7 +444,7 @@ if (!empty($_SESSION['user'])) {
         .faq-card:hover,
         .contact-card:hover {
             transform: translateY(-2px);
-            border-color: rgba(59,130,246,0.3);
+            border-color: rgba(0, 100, 200, 0.35);
             box-shadow: 0 18px 45px rgba(0,0,0,0.18);
         }
 
@@ -501,7 +528,7 @@ if (!empty($_SESSION['user'])) {
         }
 
         .faq-card details[open] summary {
-            color: #0ea5e9;
+            color: #0040a6;
         }
 
         .faq-card summary::-webkit-details-marker {
@@ -548,8 +575,8 @@ if (!empty($_SESSION['user'])) {
 
         .contact-card input:focus,
         .contact-card textarea:focus {
-            border-color: rgba(59,130,246,0.5);
-            box-shadow: 0 0 0 4px rgba(59,130,246,0.12);
+            border-color: rgba(0, 100, 200, 0.5);
+            box-shadow: 0 0 0 4px rgba(0, 100, 200, 0.12);
         }
 
         .contact-card .contact-submit {
@@ -558,8 +585,8 @@ if (!empty($_SESSION['user'])) {
             border-radius: 999px;
             border: none;
             cursor: pointer;
-            background: linear-gradient(135deg, #0ea5e9, #f59e0b);
-            color: #0f172a;
+            background: linear-gradient(135deg, #0040a6, #ff8c1f);
+            color: #fff;
             font-size: 1rem;
             font-weight: 700;
         }
@@ -596,7 +623,7 @@ if (!empty($_SESSION['user'])) {
         }
 
         footer a:hover {
-            color: #fff;
+            color: #ff8c1f;
         }
 
         @media (max-width: 1080px) {
@@ -653,6 +680,7 @@ if (!empty($_SESSION['user'])) {
     </style>
 </head>
 <body>
+    <img src="images/kimage.png" alt="KFMMS - Efficraft Technologies" class="logo-image">
     <div class="wrapper">
         <header class="site-nav">
             <a class="brand" href="landing.php">
