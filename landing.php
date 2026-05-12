@@ -245,6 +245,50 @@ if (!empty($_SESSION['user'])) {
             margin-top: 40px;
         }
 
+        .video-container {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            background: rgba(15,23,42,0.94);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 40px 110px rgba(0,0,0,0.32);
+            padding: 0;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(14,165,233,0.12), transparent 35%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-badge {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(14, 165, 233, 0.2);
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            color: #7dd3fc;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         .hero-pill {
             flex: 1 1 190px;
             min-width: 190px;
@@ -654,21 +698,13 @@ if (!empty($_SESSION['user'])) {
                     </div>
                 </div>
 
-                <section class="hero-panel" aria-label="KFMMS dashboard preview">
-                    <div class="panel-header">
-                        <div>
-                            <p class="panel-title">Operational dashboard</p>
-                            <p class="panel-subtitle">A secure, first-view summary of open work orders, inventory status, and upcoming preventive milestones.</p>
-                        </div>
-                        <span class="badge"><i class="fas fa-lock"></i> Login required</span>
-                    </div>
-                    <ul class="panel-list">
-                        <li><i class="fas fa-list-check"></i> Open and overdue work orders at a glance</li>
-                        <li><i class="fas fa-boxes"></i> Inventory alerts for low-spare thresholds</li>
-                        <li><i class="fas fa-users"></i> Technician assignments and next tasks</li>
-                        <li><i class="fas fa-calendar-days"></i> Upcoming preventive maintenance schedule</li>
-                    </ul>
-                </section>
+                <div class="video-container">
+                    <video autoplay muted loop playsinline controls>
+                        <source src="main.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <span class="video-badge"><i class="fas fa-play-circle"></i> Live demo</span>
+                </div>
             </section>
 
             <section id="features" class="features">
