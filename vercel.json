@@ -10,64 +10,13 @@
     "APP_URL": "@app_url",
     "APP_ENV": "production"
   },
-  "builds": [
-    {
-      "src": "index.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "landing.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "auth.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "license_gate.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "paypal_return.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "api/**/*.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "inventory/**/*.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "maintenance/**/*.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "reports/**/*.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "work_orders/**/*.php",
-      "use": "@vercel/php@^0.6.4"
-    },
-    {
-      "src": "*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "images/**/*",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "fonts/**/*",
-      "use": "@vercel/static"
+  "functions": {
+    "*.php": {
+      "runtime": "vercel-php@0.6.4",
+      "memory": 512,
+      "maxDuration": 30
     }
-  ],
+  },
   "routes": [
     {
       "src": "^/images/(.*)$",
@@ -134,11 +83,5 @@
       "src": "^/(.*)$",
       "dest": "/index.php?path=$1"
     }
-  ],
-  "functions": {
-    "*.php": {
-      "memory": 512,
-      "maxDuration": 30
-    }
-  }
+  ]
 }
