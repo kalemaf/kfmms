@@ -699,7 +699,7 @@ if (!empty($_SESSION['user'])) {
                 </div>
 
                 <div class="video-container">
-                    <video autoplay muted loop playsinline controls>
+                    <video autoplay muted loop playsinline>
                         <source src="main.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
